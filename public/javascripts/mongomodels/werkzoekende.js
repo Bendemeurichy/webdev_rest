@@ -23,7 +23,7 @@ const werkzoekendeSchema = new Schema({
     gereageerdevacatures: {
         type: Schema.Types.ObjectId,
         ref: 'Vacature',
-        required:true
+        required:false
     }
 });
 

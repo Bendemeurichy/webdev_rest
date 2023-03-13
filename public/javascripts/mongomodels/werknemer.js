@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const Bedrijf = require("bedrijf")
+const Bedrijf = require("public/javascripts/mongomodels/bedrijf")
 const Schema = mongoose.Schema;
 
 const werknemerSchema = new Schema({
