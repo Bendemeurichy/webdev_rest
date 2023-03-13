@@ -7,3 +7,7 @@ router.get('/', function(req, res, next) {
 });
 
 module.exports = router;
+
+router.get('/cool',function(req,res,next){
+  res.send("let's go easy deving");
+});
