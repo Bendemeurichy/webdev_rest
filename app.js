@@ -15,6 +15,9 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
 mongoose.set('strictQuery',false);
+app.use('/users', usersRouter);
+app.use('/vacatures',vacatureRouter);
+app.use('/', indexRouter);
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -22,9 +25,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/users', usersRouter);
-app.use('/vacatures',vacatureRouter);
-app.use('/', indexRouter);
+
 
 
 // Define the database URL to connect to.
