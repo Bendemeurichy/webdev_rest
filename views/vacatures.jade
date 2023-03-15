@@ -8,7 +8,7 @@ html
 
             h1 All Vacatures
         ul
-            each vacature in vacatures
+            each vacature in #{vacatures}
                 li
                     span #{vacature.bedrijf} - #{vacature.recruiter}
                     form(action='/vacatures/' + vacature._id, method='POST', style='display:inline;')
