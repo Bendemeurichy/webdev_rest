@@ -8,7 +8,7 @@ html
             button(onclick="history.back()") spek
             h1 All Vacatures
         ul
-            each vacature in #{vacatures}
+            each vacature in vacatures
                 li
                     span #{vacature.bedrijf} - #{vacature.recruiter}
                     a(href='/vacatures/' + vacature._id) View
