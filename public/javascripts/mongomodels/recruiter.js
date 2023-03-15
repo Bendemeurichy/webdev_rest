@@ -1,21 +1,24 @@
 const mongoose = require("mongoose");
 const Vacature = require("./vacatures");
+const Bedrijf = require('./bedrijf')
 const Schema = mongoose.Schema;
 
 const recruiterSchema = new Schema({
-    recruiter_naam: {
+    naam: {
         type: String,
         required: true
     },
-    recruiter_email: {
+    email: {
         type: String,
+        required: true,
+        unique:true
+    },
+    bedrijf: {
+        type: Schema.Types.ObjectId,
+        ref: 'Bedrijf',
         required: true
     },
-    recruiter_bedrijf: {
-        type: String,
-        required: true
-    },
-    recruiter_vacatures: {
+    vacatures: {
         type: [Schema.Types.ObjectId],
         ref: 'Vacature',
         require: false
@@ -23,4 +26,4 @@ const recruiterSchema = new Schema({
 });
 
 const Recruiter = mongoose.model("Recruiter",recruiterSchema);
-module.exports(Recruiter);
+module.exports=(Recruiter);

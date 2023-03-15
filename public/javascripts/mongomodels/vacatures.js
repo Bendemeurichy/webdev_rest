@@ -13,13 +13,16 @@ const vacatureSchema = new Schema({
     bedrijf:{
         type:Schema.Types.ObjectId,
         ref:'Bedrijf',
-        required:true
+        required: true
     },
     beschrijving:{
         type:String,
-        required:true
+        required: true
     },
-    eisen:[String],
+    eisen:{
+        type:[String],
+        required: true
+    },
     salaris:{
         start:{type:Number,
             required: true,
@@ -31,9 +34,8 @@ const vacatureSchema = new Schema({
                 message: 'Start salary must be less than or equal to end salary'
             }},
         end:{type:Number,required:true,min:0},
-        required:true
     },
-    publicationdate:{
+    publicatiedatum:{
         type:Date,
         required:true
     },
@@ -44,5 +46,18 @@ const vacatureSchema = new Schema({
     reacties:[{type:Schema.Types.ObjectId,ref:'Reactie'}]
 });
 
+vacatureSchema.pre('remove', { document: true }, async function (next) {
+    try {
+        // This will remove all references to the current document
+        await mongoose.model('Werkzoekende').updateMany({}, { $pull: { gereageerdevacatures: this._id } });
+        await mongoose.model('Bedrijf').updateMany({},{$pull:{vacatures:this._id}});
+        await mongoose.model('Recruiter').updateMany({},{$pull:{vacatures:this._id}});
+        // You can repeat this line for each model and field that references this document
+        next();
+    } catch (error) {
+        next(error);
+    }
+});
+
 const Vacature = mongoose.model("Vacature",vacatureSchema);
-module.exports(Vacature)
+module.exports=(Vacature);

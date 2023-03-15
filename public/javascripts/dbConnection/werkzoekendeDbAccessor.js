@@ -12,19 +12,19 @@ async function createWerkzoekende(a_naam,a_email,a_competenties,a_cv){
     });
 
     await zoeker.save();
-    console.log('new werkzoekende with email ${a_email} has been saved');
+    console.log(`new werkzoekende with email ${a_email} has been saved`);
 }
 
 async function removeWerkzoekende(a_email){
     await Werkzoekende.findOneAndDelete({emailadres:a_email});
-    console.log('werkzoekende with email ${a_email} has been deleted');
+    console.log(`werkzoekende with email ${a_email} has been deleted`);
 }
 
-async function addVacature(a_email,a_id){
+async function addVacaturetoWerkzoekende(a_email,a_id){
     try {
         let zoeker = await Werkzoekende.findOne({emailadres: a_email});
         if(!zoeker){
-            throw new Error('werkzoekende with email ${a_email} could not be found');
+            throw new Error(`werkzoekende with email ${a_email} could not be found`);
         }
 
         let vacature = await Vacature.findOne({_id:a_id});
@@ -34,9 +34,11 @@ async function addVacature(a_email,a_id){
 
         zoeker.gereageerdevacatures.push(vacature);
         await zoeker.save();
-        console.log('vacature added to werkzoekende with email ${a_email}')
+        console.log(`vacature added to werkzoekende with email ${a_email}`)
 
     } catch(err){
         console.error(err);
     }
 }
+
+

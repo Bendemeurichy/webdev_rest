@@ -27,5 +27,7 @@ const werkzoekendeSchema = new Schema({
     }
 });
 
+
+
 const Werkzoekende = mongoose.model("Werkzoekende",werkzoekendeSchema);
-module.exports(Werkzoekende);
+module.exports = (Werkzoekende);

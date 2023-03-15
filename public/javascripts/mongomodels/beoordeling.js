@@ -4,21 +4,23 @@ const Werknemer = require("./werknemer");
 const Schema = mongoose.Schema;
 
 const beoordelingSchema =  new Schema({
-    beoordeling_bedrijf: {
+    bedrijf: {
         type: Schema.Types.ObjectId,
         ref: 'Bedrijf',
-        require: true
+        require: true,
+        unique: true
     },
-    beoordeling_werknemer: {
+    werknemer: {
         type: Schema.Types.ObjectId,
         ref: 'Werknemer',
-        require: true
+        require: true,
+        unique:true
     },
-    beoordeling_tekst: {
+    tekst: {
         type: String,
         require: true
     },
-    beoordeling_score: {
+    score: {
         type: Number,
         min: 0,
         max: 5,
@@ -26,5 +28,17 @@ const beoordelingSchema =  new Schema({
     }
 });
 
+beoordelingSchema.pre('remove', { document: true }, async function (next) {
+    try {
+        // This will remove all references to the current document
+        await mongoose.model('Bedrijf').updateMany({},{$pull:{beoordelingen:this._id}});
+
+        // You can repeat this line for each model and field that references this document
+        next();
+    } catch (error) {
+        next(error);
+    }
+});
+
 const Beoordeling = mongoose.model("Beoordeling", beoordelingSchema);
-module.exports(Beoordeling);
+module.exports=(Beoordeling);
