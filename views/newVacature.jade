@@ -1,11 +1,9 @@
 doctype html
 head
 title create vacature
-    label, select, input, button
-        display: block
 body
     h1 maak nieuwe vacature
-
+    span(style='text-align:center,orientation:portrait;')
         form(method='POST', action='/vacatures')
             label(for='recruiter') Recruiter:
             select(name='recruiter')
