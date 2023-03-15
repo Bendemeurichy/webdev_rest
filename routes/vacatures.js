@@ -22,17 +22,7 @@ router.get('/new', async (req, res) => {
     res.render('vacatureForm', { recruiters, bedrijven });
 });
 
-router.post('/vacatures', async (req, res) => {
-    const { recruiter, bedrijf, beschrijving, eisen, salarisstart, salariseind, gepubliceerd, deadline } = req.body;
-    try {
-        vacaturehandler.addVacature(recruiter, bedrijf, beschrijving, eisen, salarisstart, salariseind, gepubliceerd, deadline);
-    } catch (err){
-        console.error("something went wrong while saving vacature,try again")
-        alert("something went wrong while creating the vacature,try again")
-        res.redirect('/new')
-    }
-    res.redirect('/');
-});
+
 
 
 module.exports = router;
