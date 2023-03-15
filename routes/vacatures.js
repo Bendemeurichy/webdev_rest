@@ -18,14 +18,14 @@ router.get('/', async function(req, res, next) {
 
 
 // Define a route for displaying the form
-router.get('/vacatures/new', async (req, res) => {
+router.get('/new', async (req, res) => {
     const recruiters = await Recruiter.find();
     const bedrijven = await Bedrijf.find();
     res.render('vacatureForm', { recruiters, bedrijven });
 });
 
 // Define a route for processing the form submission
-router.post('/vacatures', async (req, res) => {
+router.post('/', async (req, res) => {
     const { recruiter, bedrijf, beschrijving, eisen, salarisstart, salariseind, gepubliceerd, deadline } = req.body;
 
     const vacature = new Vacature({

@@ -7,5 +7,7 @@ html
             each bedrijf in #{bedrijven}
                 li
                     span
-                        h2 #{bedrijf.naam} - #{bedrijf.industrie}\n
-                        p #{bedrijf.beschrijving}
+                        h2 #{bedrijf.naam}
+                        p
+                            b Beschrijving
+                            #{bedrijf.beschrijving}
