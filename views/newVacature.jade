@@ -1,9 +1,12 @@
 doctype html
 head
 title create vacature
+style
+    form
+        padding: 20px
 body
     h1 maak nieuwe vacature)
-        form(method='POST', action='/vacatures',style='text-allign:center,orientation:portrait;')
+        form(method='POST', action='/vacatures',)
             label(for='recruiter') Recruiter:
             select(name='recruiter')
                 each recruiter in recruiters
