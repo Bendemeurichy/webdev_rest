@@ -21,7 +21,7 @@ router.get('/', async function(req, res, next) {
 router.get('/new', async (req, res) => {
     const recruiters = await Recruiter.find();
     const bedrijven = await Bedrijf.find();
-    res.render('vacatureForm', { recruiters, bedrijven });
+    res.render('newVacature', { recruiters, bedrijven });
 });
 
 // Define a route for processing the form submission
@@ -40,7 +40,7 @@ router.post('/', async (req, res) => {
 
     await vacature.save();
     console.log(`New vacature by bedrijf ${bedrijf} has been added`);
-    res.redirect('/vacatures');
+    res.redirect('/');
 });
 
 module.exports = router;
