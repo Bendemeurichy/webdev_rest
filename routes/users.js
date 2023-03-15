@@ -3,7 +3,6 @@ var router = express.Router();
 
 /* GET users listing. */
 router.get('/cool',function(req,res,next){
-  console.log('cool called')
   res.send('let\'s go easy deving.....');
 });
 
