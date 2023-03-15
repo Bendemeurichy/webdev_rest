@@ -7,6 +7,7 @@ let mongoose = require('mongoose');
 let indexRouter = require('./routes/index');
 let usersRouter = require('./routes/users');
 let vacatureRouter = require('./routes/vacatures');
+let bedrijfRouter = require('./routes/bedrijven')
 
 let app = express();
 
@@ -17,6 +18,7 @@ app.set('view engine', 'jade');
 mongoose.set('strictQuery',false);
 app.use('/users', usersRouter);
 app.use('/vacatures',vacatureRouter);
+app.use('/bedrijven',bedrijfRouter);
 app.use('/', indexRouter);
 
 app.use(logger('dev'));
