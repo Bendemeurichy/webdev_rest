@@ -3,6 +3,7 @@ const Vacature = require('../mongomodels/vacatures');
 const Recruiter = require('../mongomodels/recruiter')
 const Bedrijf = require('../mongomodels/bedrijf')
 const Reactie = require('../mongomodels/reacties')
+
 async function addVacature(a_recruiter,a_bedrijf,a_beschrijving,a_eisen,a_salarisstart,a_salariseind,a_gepubliceerd,a_deadline){
     let vacatuur = new Vacature({
         recruiter: Recruiter.findOne({email:a_recruiter}),
@@ -14,6 +15,7 @@ async function addVacature(a_recruiter,a_bedrijf,a_beschrijving,a_eisen,a_salari
         deadline:a_deadline
     });
     await vacatuur.save();
+    alert("new vacature has been added")
     console.log(`new vacature by bedrijf ${a_bedrijf} has been added`)
 }
 
@@ -36,5 +38,7 @@ async function addReactie(a_werkzoekende,a_tekst,a_vacature){
 
     vacatuur.reacties.push(reactie);
     await vacatuur.save()
+    alert("reactie has been added");
+
     console.log(`reactie has been added`)
 }

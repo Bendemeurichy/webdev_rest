@@ -1,35 +1,38 @@
 doctype html
 head
 title create vacature
+    label, select, input, button
+        display: block
 body
     h1 maak nieuwe vacature
-    form(method='POST', action='/vacatures')
-        label(for='recruiter') Recruiter:
-        select(name='recruiter')
-            each recruiter in recruiters
-                option(value=`${recruiter._id}`) #{recruiter.name}
+    span
+        form(method='POST', action='/vacatures')
+            label(for='recruiter') Recruiter:
+            select(name='recruiter')
+                each recruiter in recruiters
+                    option(value=`${recruiter._id}`) #{recruiter.name}
 
-        label(for='bedrijf') Bedrijf:
-        select(name='bedrijf')
-            each bedrijf in bedrijven
-                option(value=`${bedrijf._id}`) #{bedrijf.name}
+            label(for='bedrijf') Bedrijf:
+            select(name='bedrijf')
+                each bedrijf in bedrijven
+                    option(value=`${bedrijf._id}`) #{bedrijf.name}
 
-        label(for='beschrijving') Beschrijving:
-        input(type='text', name='beschrijving')
+            label(for='beschrijving') Beschrijving:
+            input(type='text', name='beschrijving')
 
-        label(for='eisen') Eisen:
-        input(type='text', name='eisen')
+            label(for='eisen') Eisen:
+            input(type='text', name='eisen')
 
-        label(for='salarisstart') Salaris Start:
-        input(type='number', name='salarisstart')
+            label(for='salarisstart') Salaris Start:
+            input(type='number', name='salarisstart')
 
-        label(for='salariseind') Salaris Einde:
-        input(type='number', name='salariseind')
+            label(for='salariseind') Salaris Einde:
+            input(type='number', name='salariseind')
 
-        label(for='gepubliceerd') Gepubliceerd:
-        input(type='date', name='gepubliceerd')
+            label(for='gepubliceerd') Gepubliceerd:
+            input(type='date', name='gepubliceerd')
 
-        label(for='deadline') Deadline:
-        input(type='date', name='deadline')
+            label(for='deadline') Deadline:
+            input(type='date', name='deadline')
 
-        button(type='submit') Create Vacature
+            button(type='submit') Create Vacature

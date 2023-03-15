@@ -1,7 +1,7 @@
 doctype html
 html
     head
-        title Bedrijven
+        title bedrijven
     body
         ul
             each bedrijf in #{bedrijven}
@@ -9,8 +9,16 @@ html
                     span
                         h2 #{bedrijf.naam}
                         p
-                            b Beschrijving:
-                            #{bedrijf.beschrijving}
                             b Industrie:
-                            #{bedrijf.industrie}
+                            |    #{bedrijf.industrie}
                             br
+                            b Beschrijving:
+                            |    #{bedrijf.beschrijving}
+                            br
+                            b Aantal werknemers:
+                            |   #{bedrijf.tot_aantal_werknemers}
+                            br
+                            b Gemiddelde score:
+                            |   #{bedrijf.gem_score}
+                            br
+                            a(href='/bedrijven/' + bedrijf.naam) Bezoek bedrijf pagina
