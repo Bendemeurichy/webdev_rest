@@ -6,14 +6,13 @@ html
     body
         span
             button(onclick="history.back()") spek
-
             h1 All Vacatures
         ul
             each vacature in #{vacatures}
                 li
                     span #{vacature.bedrijf} - #{vacature.recruiter}
-                    form(action='/vacatures/' + vacature._id, method='POST', style='display:inline;')
-                        input(type='hidden', name='_method', value='DELETE')
-                        button(type='submit') Delete
+                    a(href='/vacatures/' + vacature._id) View
+                    a(href='/vacatures/' + vacature._id + '?_method=DELETE', rel='nofollow', data-method='DELETE') Delete
         div(style='text-align:center;')
             a(href='/vacatures/new') Create New Vacature
+

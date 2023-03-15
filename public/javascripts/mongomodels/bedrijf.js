@@ -18,7 +18,7 @@ const bedrijfSchema = new Schema({
         require: true
     },
     tot_aantal_werknemers: {
-        type: String,
+        type: Number,
         min: 0,
         require: true
     },
