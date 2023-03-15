@@ -3,7 +3,7 @@ var router = express.Router();
 const Vacature = require('../public/javascripts/mongomodels/vacatures');
 const Recruiter = require('../public/javascripts/mongomodels/recruiter');
 const Bedrijf = require('../public/javascripts/mongomodels/bedrijf');
-const vacaturehandler= require('/public/javascripts/dbConnection/vacatureDbAccessor')
+const vacaturehandler= require('../public/javascripts/dbConnection/vacatureDbAccessor')
 
 /* GET home page. */
 router.get('/', async function(req, res, next) {
