@@ -3,7 +3,7 @@ var router = express.Router();
 
 /* GET users listing. */
 router.get('/cool',function(req,res,next){
-  res.send("let's go easy deving");
+  res.send('let\'s go easy deving');
 });
 
 router.get('/', function(req, res, next) {
