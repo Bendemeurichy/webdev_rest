@@ -1,0 +1,11 @@
+doctype html
+html
+    head
+        title Bedrijven
+    body
+        ul
+            each bedrijf in #{bedrijven}
+                li
+                    span
+                        title #{bedrijf.naam} - #{bedrijf.industrie}\n
+                        #{bedrijf.beschrijving}
