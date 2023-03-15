@@ -16,13 +16,13 @@ router.get('/', async function(req, res, next) {
     }
 });
 
-app.get('/new', async (req, res) => {
+router.get('/new', async (req, res) => {
     const recruiters = await Recruiter.find();
     const bedrijven = await Bedrijf.find();
     res.render('vacatureForm', { recruiters, bedrijven });
 });
 
-app.post('/vacatures', async (req, res) => {
+router.post('/vacatures', async (req, res) => {
     const { recruiter, bedrijf, beschrijving, eisen, salarisstart, salariseind, gepubliceerd, deadline } = req.body;
     try {
         vacaturehandler.addVacature(recruiter, bedrijf, beschrijving, eisen, salarisstart, salariseind, gepubliceerd, deadline);

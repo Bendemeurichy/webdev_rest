@@ -19,4 +19,4 @@ const reactieSchema = new Schema({
 });
 
 const Reactie = mongoose.model("Reactie",reactieSchema);
-module.exports(Reactie);
+module.exports=(Reactie);
