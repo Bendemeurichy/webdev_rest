@@ -2,9 +2,8 @@ doctype html
 head
 title create vacature
 body
-    h1 maak nieuwe vacature
-    span(style='text-align:center,orientation:portrait;')
-        form(method='POST', action='/vacatures')
+    h1 maak nieuwe vacature)
+        form(method='POST', action='/vacatures',style='text-allign:center,orientation:portrait;')
             label(for='recruiter') Recruiter:
             select(name='recruiter')
                 each recruiter in recruiters
