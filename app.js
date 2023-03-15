@@ -22,9 +22,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/vacatures',vacatureRouter);
+app.use('/', indexRouter);
+
 
 // Define the database URL to connect to.
 const mongoDB = "mongodb://localhost:27017/restApi";
