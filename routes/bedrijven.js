@@ -32,6 +32,10 @@ router.post('/add',
         const {naam, industrie, beschrijving} = req.body;
         try {
             const newBedrijf = await createBedrijf(naam, industrie, beschrijving);
+            res.redirect('/');
+            return res.status(200).json({ message: 'New bedrijf added successfully!', data: newBedrijf });
+        } catch (err) {
+
         }
     }
 }
