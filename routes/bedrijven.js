@@ -35,9 +35,15 @@ router.post('/add',
         const industrie = req.body.industrie;
         const beschrijving = req.body.beschrijving;
         try {
-            const newBedrijf = await createBedrijf(naam, industrie, beschrijving);
-            res.redirect('/');
-            return res.status(200).json({ message: 'New bedrijf added successfully!', data: newBedrijf });
+            var bedrijf = Bedrijf.findOne({naam: naam});
+            if(!bedrijf) {
+                const newBedrijf = await createBedrijf(naam, industrie, beschrijving);
+                res.redirect('/');
+                return res.status(200).json({message: 'New bedrijf added successfully!', data: newBedrijf});
+            } else {
+                alert(`Bedrijf met naam ${naam} bestaat al.`);
+                res.redirect('/');
+            }
         } catch (err) {
             console.log(err);
             return res.status(500).json({ message: 'An error occurred while adding a new bedrijf.' });
