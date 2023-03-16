@@ -23,6 +23,20 @@ router.get('/', async function(req, res, next) {
     }
 });
 
+router.get('/vacatures/:id', async (req, res) => {
+    try {
+        const vacature = await Vacature.findById(req.params.id);
+        const bedrijf = await Bedrijf.findById(vacature.bedrijf);
+        const recruiter = await Recruiter.findById(vacature.recruiter);
+        vacature.bedrijf = bedrijf.naam;
+        vacature.recruiter = recruiter.naam;
+        res.render('vacatureDetails', { vacature });
+    } catch (err) {
+        console.error(err);
+        res.status(500).send('Server error');
+    }
+});
+
 
 
 // Define a route for displaying the form
