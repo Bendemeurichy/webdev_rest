@@ -23,6 +23,7 @@ router.get('/overview/:bedrijf', async(req, res) => {
     const bedrijfNaam = req.params.bedrijf;
     try {
         const requested = await Bedrijf.findOne({naam: bedrijfNaam});
+        console.log(requested.naam);
         res.render('bedrijfOverview', {bedrijf: requested});
     } catch (err) {
         console.error(err);
