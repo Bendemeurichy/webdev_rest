@@ -30,6 +30,7 @@ router.post('/add',
         const errorMessages = errors.array().map(error => error.msg);
         return res.render('addBedrijf',{errorMessages})
     } else {
+        console.log(req.body)
         const {naam, industrie, beschrijving} = req.body;
         try {
             const newBedrijf = await createBedrijf(naam, industrie, beschrijving);
