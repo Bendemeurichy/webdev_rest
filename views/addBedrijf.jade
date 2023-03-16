@@ -8,13 +8,13 @@ html
         span
             form(method='post', action='/bedrijven/add')
                 label(for='naam') Bedrijfsnaam:
-                input(type='text', name='naam')
+                input(type='text', name='naam', required=true)
 
                 label(for='industrie') Industrie gebied van het bedrijf:
-                input(type='text', name='industrie')
+                input(type='text', name='industrie', required=true)
 
                 label(for='beschrijving') Korte beschrijving: 
-                textarea(id="beschrijving", name='beschrijving')
+                textarea(id="beschrijving", name='beschrijving', required=true)
 
                 button(type='submit') Add bedrijf
 
