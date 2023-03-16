@@ -19,7 +19,16 @@ router.get('/add', async (req, res) => {
     res.render('addBedrijf');
 });
 
-router.get(/^\/overview-.*$/)
+router.get('/overview/:bedrijf', async(req, res) => {
+    const bedrijfNaam = req.params.bedrijf;
+    try {
+        const requested = await Bedrijf.findOne({naam: bedrijfNaam});
+        res.render('bedrijfOverview', {bedrijf: requested});
+    } catch (err) {
+        console.error(err);
+        res.status(500).send('Server error');
+    }
+});
 
 router.post('/add',
     body('naam').trim().isLength({min:1}).withMessage('Naam is verplicht').escape(),
@@ -56,7 +65,7 @@ router.post('/add',
     }
 });
 
-router.delete('/:id',async(req,res)=>{
+router.post('/delete/:id',async(req,res)=>{
     const bedrijfid = req.params.id;
     try{
         await removeBedrijf(bedrijfid)
