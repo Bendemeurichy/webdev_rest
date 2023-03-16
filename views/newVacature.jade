@@ -11,28 +11,28 @@ body
             select(name='recruiter')
                 each recruiter in recruiters
                     option(value=`${recruiter._id}`) #{recruiter.name}
-
+            br
             label(for='bedrijf') Bedrijf:
             select(name='bedrijf')
                 each bedrijf in bedrijven
                     option(value=`${bedrijf._id}`) #{bedrijf.name}
-
+            br
             label(for='beschrijving') Beschrijving:
             input(type='text', name='beschrijving')
-
+            br
             label(for='eisen') Eisen (scheid eisen met ,):
             input(type='text', name='eisen')
-
+            br
             label(for='salarisstart') Salaris Start:
             input(type='number', name='salarisstart')
-
+            br
             label(for='salariseind') Salaris Einde:
             input(type='number', name='salariseind')
-
+            br
             label(for='gepubliceerd') Gepubliceerd:
             input(type='date', name='gepubliceerd')
-
+            br
             label(for='deadline') Deadline:
             input(type='date', name='deadline')
-
+            br
             button(type='submit') Create Vacature
