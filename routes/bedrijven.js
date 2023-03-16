@@ -25,7 +25,6 @@ router.post('/add',
     body('beschrijving').trim().isLength({min:1}).withMessage('Beschrijving is verplicht').isAlpha().withMessage('Enkel letters en cijfers toegelaten').escape()
     ,*/
     async (req, res) => {
-        console.log(req)
     const errors = validationResult(req);
     if (! errors.isEmpty()) {
         const errorMessages = errors.array().map(error => error.msg);

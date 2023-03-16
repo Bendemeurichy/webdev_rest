@@ -6,12 +6,12 @@ html
         button(onclick="history.back()") spek
         h1 Voeg nieuw bedrijf toe
         span
-            form(method='POST', action='/bedrijven/add')
+            form(method='POST', action='')
                 label(for='naam') Bedrijfsnaam:
-                input(type='text', name='naam')
+                input(type='text',id='naam', name='naam')
 
                 label(for='industrie') Industrie gebied van het bedrijf:
-                input(type='text', name='industrie')
+                input(type='text',id='industrie', name='industrie')
 
                 label(for='beschrijving') Korte beschrijving: 
                 textarea(id="beschrijving", name='beschrijving')
