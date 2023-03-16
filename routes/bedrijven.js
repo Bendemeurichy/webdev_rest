@@ -47,7 +47,7 @@ router.post('/add',
             }
         } catch (err) {
             console.log("Unknown error has occurred");
-            res.redirect('/');
+            res.redirect('/bedrijven/add');
             return res.status(500).json({ message: 'An error occurred while adding a new bedrijf.' });
         }
     }
