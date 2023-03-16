@@ -10,9 +10,12 @@ html
         ul
             each vacature in vacatures
                 li
-                    span #{vacature.bedrijf} - #{vacature.recruiter}
-                    a(href='/vacatures/' + vacature._id) View
-                    a(href='/vacatures/' + vacature._id + '?_method=DELETE', rel='nofollow', data-method='DELETE') Delete
+                    a(href=`/vacatures?v=${vacature._id}`)
+                        span #{vacature.bedrijf} - #{vacature.recruiter}
+                        #{vacature.beschrijving}
+                        #{vacature.eisen}
+                        span salaris= #{vacature.salaris.start} - #{vacature.salaris.end}
+                        span gepubliceerd op:#{vacature.publicatiedatum.toLocaleDateString()}, reageer voor: #{vacature.deadline.toLocaleDateString()}
         div(style='text-align:center;')
             a(href='/vacatures/new') Create New Vacature
 

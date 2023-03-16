@@ -3,6 +3,7 @@ html
     head
         title Bedrijven
     body
+        button(onclick="history.back()") spek
         h1 Alle bedrijven
         ul
             each bedrijf in bedrijven
@@ -23,3 +24,4 @@ html
                             |   #{bedrijf.gem_score}
                             br
                             a(href='/bedrijven/' + bedrijf.naam) Bezoek bedrijf pagina
+        a(href='/bedrijven/add') Voeg nieuw bedrijf toe
