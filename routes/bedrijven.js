@@ -66,7 +66,7 @@ router.post('/add',
     }
 });
 
-router.post('/delete/:id',async(req,res)=>{
+router.delete('/delete/:id',async(req,res)=>{
     const bedrijfid = req.params.id;
     try{
         await removeBedrijf(bedrijfid)

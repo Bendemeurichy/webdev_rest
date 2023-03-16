@@ -25,6 +25,23 @@ html
                             br
                             a(href='/bedrijven/overview/#{bedrijf.naam}') Bezoek bedrijf pagina
                             br
-                            button(onclick="")
+                            button(id=bedrijf.naam onclick="deleteCompany(#{bedrijf.naam})") Remove Bedrijf
 
         a(href='/bedrijven/add') Voeg nieuw bedrijf toe
+        script.
+            function deleteCompany(companyName) {
+                const url = `/bedrijven/${companyName}`;
+                fetch(url, {method: 'DELETE'})
+                    .then(response => {
+                        if (response.ok) {
+                            console.log('succesfullly deleted')
+                            // Handle successful deletion
+                        } else {
+                            console.error("something went wrong")
+                            // Handle error response
+                        }
+                    })
+                    .catch(error => {
+                        // Handle network or other error
+                    });
+            }
