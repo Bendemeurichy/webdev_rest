@@ -45,3 +45,5 @@ async function removeBeoordeling(a_bedrijf, a_werknemer) {
     await Beoordeling.findOneAndDelete({naam:a_bedrijf, werknemer:a_werknemer});
     console.log(`removed beoordeling for bedrijf ${a_bedrijf.naam} form ${a_werknemer.email}.`);
 }
+
+module.exports.createBedrijf = createBedrijf;
