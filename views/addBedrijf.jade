@@ -17,3 +17,8 @@ html
                 textarea(id="beschrijving")
 
                 button(type='submit') Add bedrijf
+
+                if errors
+                    ul
+                        for error in errors
+                            li!= error.msg
