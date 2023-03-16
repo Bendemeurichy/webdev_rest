@@ -3,7 +3,7 @@ const router = express.Router();
 const Vacature = require('../public/javascripts/mongomodels/vacatures');
 const Recruiter = require('../public/javascripts/mongomodels/recruiter');
 const Bedrijf = require('../public/javascripts/mongomodels/bedrijf');
-const vacaturecontroller=require('../public/javascripts/dbConnection/vacatureDbAccessor')
+const {addVacature}=require('../public/javascripts/dbConnection/vacatureDbAccessor')
 const { body, validationResult } = require("express-validator");
 
 /* GET home page. */
