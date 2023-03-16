@@ -19,7 +19,7 @@ router.get('/add', async (req, res) => {
     res.render('addBedrijf');
 });
 
-router.get(/^\/overview-*$/)
+router.get(/^\/overview-.*$/)
 
 router.post('/add',
     body('naam').trim().isLength({min:1}).withMessage('Naam is verplicht').escape(),

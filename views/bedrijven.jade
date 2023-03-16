@@ -24,9 +24,8 @@ html
                             |   #{bedrijf.gem_score}
                             br
                             a(href='/bedrijven/overview-' + bedrijf.naam) Bezoek bedrijf pagina
-                            button(id=bedrijf.naam) Verwijder dit bedrijf
                             br
-                            form(method="delete" action=`/bedrijven/${bedrijf.naam}`)
+                            form(method="DELETE" action=`/bedrijven/${bedrijf.naam}`)
                                 button(type='submit') remove bedrijf
 
         a(href='/bedrijven/add') Voeg nieuw bedrijf toe
