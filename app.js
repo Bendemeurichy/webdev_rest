@@ -1,8 +1,7 @@
 let createError = require('http-errors');
 let express = require('express');
 let path = require('path');
-let cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser')
+let cookieParser = require('cookie-parser')
 let logger = require('morgan');
 let mongoose = require('mongoose');
 let indexRouter = require('./routes/index');
@@ -17,20 +16,18 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
 mongoose.set('strictQuery',false);
+
+
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+
 app.use('/users', usersRouter);
 app.use('/vacatures',vacatureRouter);
 app.use('/bedrijven',bedrijfRouter);
 app.use('/', indexRouter);
-
-app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-//app.use(express.json());
-//app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
-
-
 
 
 // Define the database URL to connect to.
