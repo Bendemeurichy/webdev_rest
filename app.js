@@ -2,6 +2,7 @@ let createError = require('http-errors');
 let express = require('express');
 let path = require('path');
 let cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser')
 let logger = require('morgan');
 let mongoose = require('mongoose');
 let indexRouter = require('./routes/index');
@@ -22,8 +23,10 @@ app.use('/bedrijven',bedrijfRouter);
 app.use('/', indexRouter);
 
 app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+//app.use(express.json());
+//app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
