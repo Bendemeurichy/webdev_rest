@@ -44,17 +44,18 @@ router.post('/new',
         // Finds the validation errors in this request and wraps them in an object with handy functions
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
-            return res.status(400).json({ errors: errors.array() });
+            const errorMessages = errors.array().map(error => error.msg);
+            return res.status(422).json({ errors: errorMessages });
         }else {
         const { recruiter, bedrijf, beschrijving, eisen, salarisstart, salariseind, gepubliceerd, deadline } = req.body;
 
         try {
             const newVacature = await addVacature(recruiter, bedrijf, beschrijving, eisen.split(','), salarisstart, salariseind, gepubliceerd, deadline);
             res.redirect('/')
-            return res.status(200).json({ message: 'New vacancy added successfully!', data: newVacature });
+            return res.status(200).json({ message: 'New vacature added successfully!', data: newVacature });
         } catch (error) {
             console.log(error);
-            return res.status(500).json({ message: 'An error occurred while adding a new vacancy.' });
+            return res.status(500).json({ message: 'An error occurred while adding a new vacature.' });
         }
     }
 });
