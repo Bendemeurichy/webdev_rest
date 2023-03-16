@@ -23,7 +23,7 @@ html
                             b Gemiddelde score:
                             |   #{bedrijf.gem_score}
                             br
-                            a(href='/bedrijven/overview/:' + bedrijf.naam) Bezoek bedrijf pagina
+                            a(href='/bedrijven/overview/' + bedrijf.naam) Bezoek bedrijf pagina
                             br
                             form(method='post' action='/bedrijven/delete/'+bedrijf.naam)
                                 button(type='submit') remove bedrijf
