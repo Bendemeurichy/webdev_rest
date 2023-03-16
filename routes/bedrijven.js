@@ -19,11 +19,11 @@ router.get('/add', async (req, res) => {
     res.render('addBedrijf');
 });
 
-router.post('bedrijven/add',
+router.post('/add',
     body('naam').trim().isLength({min:1}).withMessage('Naam is verplicht').escape(),
     body('industrie').trim().isLength({min:1}).withMessage('Industrie is verplicht').isAlpha().withMessage('Enkel letters toegelaten').escape(),
     body('beschrijving').trim().isLength({min:1}).withMessage('Beschrijving is verplicht').isAlpha().withMessage('Enkel letters en cijfers toegelaten').escape()
-), async (req, res) => {
+    , async (req, res) => {
     const errors = validationResult(req);
     if (! errors.isEmpty()) {
         const errorMessages = errors.array().map(error => error.msg);
@@ -32,13 +32,13 @@ router.post('bedrijven/add',
         const {naam, industrie, beschrijving} = req.body;
         try {
             const newBedrijf = await createBedrijf(naam, industrie, beschrijving);
-            res.redirect('/bedrijven');
+            res.redirect('/');
             return res.status(200).json({ message: 'New bedrijf added successfully!', data: newBedrijf });
         } catch (err) {
             console.log(error);
             return res.status(500).json({ message: 'An error occurred while adding a new bedrijf.' });
         }
     }
-}
+});
 
 module.exports = router;
