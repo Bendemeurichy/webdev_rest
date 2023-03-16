@@ -43,9 +43,10 @@ router.post('/add',
             } else {
                 console.log("Bedrijf bestaat error");
                 res.redirect('/');
-                return res.status(200).json({message: 'Bedrijf already in DB', data: newBedrijf});
+                return res.status(200).json({message: 'Bedrijf already in DB'});
             }
         } catch (err) {
+            console.log("Unknown error has occurred");
             res.redirect('/');
             return res.status(500).json({ message: 'An error occurred while adding a new bedrijf.' });
         }
