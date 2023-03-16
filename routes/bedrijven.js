@@ -38,11 +38,11 @@ router.post('/add',
             var bedrijf = Bedrijf.findOne({naam: naam});
             if(!bedrijf) {
                 await createBedrijf(naam, industrie, beschrijving);
-                res.redirect('/');
+                res.redirect('/bedrijven');
                 return;
             } else {
                 console.log("Bedrijf bestaat error");
-                res.redirect('/');
+                res.redirect('/bedrijven/add');
                 return;
             }
         } catch (err) {
