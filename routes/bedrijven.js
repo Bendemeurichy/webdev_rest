@@ -38,6 +38,7 @@ router.post('/add',
             var bedrijf = Bedrijf.findOne({naam: naam});
             if(!bedrijf) {
                 await createBedrijf(naam, industrie, beschrijving);
+                console.log("bedrijf toegevoegd")
                 res.redirect('/bedrijven');
                 return;
             } else {
