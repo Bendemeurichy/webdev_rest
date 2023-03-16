@@ -19,7 +19,7 @@ router.get('/add', async (req, res) => {
     res.render('addBedrijf');
 });
 
-router.post('/add',
+router.post('bedrijven/add',
     body('naam').trim().isLength({min:1}).withMessage('Naam is verplicht').escape(),
     body('industrie').trim().isLength({min:1}).withMessage('Industrie is verplicht').isAlpha().withMessage('Enkel letters toegelaten').escape(),
     body('beschrijving').trim().isLength({min:1}).withMessage('Beschrijving is verplicht').isAlpha().withMessage('Enkel letters en cijfers toegelaten').escape()
