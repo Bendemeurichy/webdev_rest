@@ -35,6 +35,7 @@ router.post('/add',
         const industrie = req.body.industrie;
         const beschrijving = req.body.beschrijving;
         try {
+            console.log(Bedrijf.exists({naam:naam}));
             if(!Bedrijf.exists({naam:naam})) {
                 await createBedrijf(naam, industrie, beschrijving);
                 console.log("bedrijf toegevoegd");
