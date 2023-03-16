@@ -3,8 +3,10 @@ head
 title create vacature
 body
     h1 maak nieuwe vacature
+    button(onclick="history.back()") back
+
     span
-        form(method='POST', action='/vacatures',)
+        form(method='POST', action='/vacatures/new',)
             label(for='recruiter') Recruiter:
             select(name='recruiter')
                 each recruiter in recruiters

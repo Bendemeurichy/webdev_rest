@@ -8,4 +8,10 @@ html
         span
             form(method='POST', action='bedrijven')
                 label(for='naam') Bedrijfsnaam:
-                input(type='text', name='beschrijvin')
+                input(type='text', name='naam')
+
+                label(for='industrie') Industrie gebied van het bedrijf:
+                input(type='text', name='industrie')
+
+                label(for='beschrijving') Korte beschrijving: 
+                textarea(id="beschrijving")
