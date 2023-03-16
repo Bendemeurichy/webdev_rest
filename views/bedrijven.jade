@@ -30,7 +30,7 @@ html
         a(href='/bedrijven/add') Voeg nieuw bedrijf toe
         script.
             function deleteCompany(companyName) {
-                const url = `/bedrijven/${companyName}`;
+                const url = `/bedrijven/delete/${companyName}`;
                 fetch(url, {method: 'DELETE'})
                     .then(response => {
                         if (response.ok) {
