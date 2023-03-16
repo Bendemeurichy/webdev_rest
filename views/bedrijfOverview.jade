@@ -1,0 +1,34 @@
+doctype html
+html
+    head
+        title #{bedrijf.naam}
+    body
+        button(onclick="window.location.href='/'") spek
+        h1 #{bedrijf.naam} overzicht
+        div(id='general_info')
+            p
+                b Industrie:
+                |    #{bedrijf.industrie}
+                br
+                b Beschrijving:
+                |    #{bedrijf.beschrijving}
+                br
+                b Aantal werknemers:
+                |   #{bedrijf.tot_aantal_werknemers}
+                br
+                b Gemiddelde score:
+                |   #{bedrijf.gem_score}
+                br
+        div(id='reviews')
+            h4 Beoordelingen
+            br
+            ul
+                each beoordeling in bedrijf.beoordelingen
+                    span
+                        li
+                            b Score:
+                            |   #{beoordeling.score}
+                            br
+                            b Beoordeling:
+                            | #{beoordeling.tekst}
+                            br

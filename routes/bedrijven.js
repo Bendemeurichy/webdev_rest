@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const Bedrijf = require('../public/javascripts/mongomodels/bedrijf');
-const {bedrijfControllor, createBedrijf} = require('../public/javascripts/dbConnection/bedrijfDbAccessor');
+const {removeBedrijf, createBedrijf} = require('../public/javascripts/dbConnection/bedrijfDbAccessor');
 const {body, validationResult} = require("express-validator");
 
 /* GET bedrijven overview */
@@ -19,12 +19,14 @@ router.get('/add', async (req, res) => {
     res.render('addBedrijf');
 });
 
+router.get(/^\/overview-*$/)
+
 router.post('/add',
     body('naam').trim().isLength({min:1}).withMessage('Naam is verplicht').escape(),
     body('industrie').trim().isLength({min:1}).withMessage('Industrie is verplicht').isAlpha().withMessage('Enkel letters toegelaten').escape(),
     body('beschrijving').trim().isLength({min:1}).withMessage('Beschrijving is verplicht').isAlpha().withMessage('Enkel letters en cijfers toegelaten').escape()
     ,
-        async (req, res) => {
+        (req, res) => {
     const errors = validationResult(req);
     if (! errors.isEmpty()) {
         const errorMessages = errors.array().map(error => error.msg);
@@ -35,23 +37,35 @@ router.post('/add',
         const a_industrie = req.body.industrie;
         const a_beschrijving = req.body.beschrijving;
         try {
-            Bedrijf.findOne({naam:a_naam}).then(bedrijf=>{
+            Bedrijf.findOne({naam:a_naam}).then(async bedrijf=>{
                 if(bedrijf){
                 console.log("Bedrijf bestaat error");
                 res.redirect('/bedrijven/add');
                 return;
             }else {
-                createBedrijf(a_naam, a_industrie, a_beschrijving);
+                await createBedrijf(a_naam, a_industrie, a_beschrijving);
                 console.log("bedrijf toegevoegd");
                 res.redirect('/bedrijven');
                 return;
                 }});
         } catch (err) {
             console.log("Unknown error has occurred");
-            res.redirect('/bedrijven/add');
-            return res.status(500).json({ message: 'An error occurred while adding a new bedrijf.' });
+            res.status(500).json({ message: 'An error occurred while adding a new bedrijf.' });
+            return
         }
     }
 });
 
+router.delete('/:id',async(req,res)=>{
+    const bedrijfid = req.params.id;
+    try{
+        await removeBedrijf(bedrijfid)
+        res.redirect('/bedrijven')
+    }catch(err){
+        console.log("Unknown error has occurred");
+        res.status(500).json({ message: 'An error occurred while removing a bedrijf.' });
+        return
+    }
+
+})
 module.exports = router;
