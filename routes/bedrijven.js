@@ -37,14 +37,12 @@ router.post('/add',
         try {
             var bedrijf = Bedrijf.findOne({naam: naam});
             if(!bedrijf) {
-                const newBedrijf = await createBedrijf(naam, industrie, beschrijving);
+                await createBedrijf(naam, industrie, beschrijving);
                 res.redirect('/');
-                res.status(200).json({message: 'New bedrijf added successfully!', data: newBedrijf});
                 return;
             } else {
                 console.log("Bedrijf bestaat error");
                 res.redirect('/');
-                res.status(200).json({message: 'Bedrijf already in DB'});
                 return;
             }
         } catch (err) {
