@@ -31,21 +31,21 @@ router.post('/add',
         return res.render('addBedrijf',{errors:errorMessages})
     } else {
 
-        const naam = req.body.naam;
-        const industrie = req.body.industrie;
-        const beschrijving = req.body.beschrijving;
+        const a_naam = req.body.naam;
+        const a_industrie = req.body.industrie;
+        const a_beschrijving = req.body.beschrijving;
         try {
-            console.log(Bedrijf.exists({naam:naam}));
-            if(!Bedrijf.exists({naam:naam})) {
-                await createBedrijf(naam, industrie, beschrijving);
-                console.log("bedrijf toegevoegd");
-                res.redirect('/bedrijven');
-                return;
-            } else {
+            Bedrijf.findOne({naam:a_naam}).then(bedrijf=>{
+                if(bedrijf){
                 console.log("Bedrijf bestaat error");
                 res.redirect('/bedrijven/add');
                 return;
-            }
+            }else {
+                    createBedrijf(a_naam, a_industrie, a_beschrijving);
+                    console.log("bedrijf toegevoegd");
+                    res.redirect('/bedrijven');
+                    return;
+                }});
         } catch (err) {
             console.log("Unknown error has occurred");
             res.redirect('/bedrijven/add');
