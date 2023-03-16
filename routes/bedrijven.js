@@ -39,7 +39,7 @@ router.post('/add',
             res.redirect('/');
             return res.status(200).json({ message: 'New bedrijf added successfully!', data: newBedrijf });
         } catch (err) {
-            console.log(error);
+            console.log(err);
             return res.status(500).json({ message: 'An error occurred while adding a new bedrijf.' });
         }
     }
