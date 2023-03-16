@@ -39,11 +39,13 @@ router.post('/add',
             if(!bedrijf) {
                 const newBedrijf = await createBedrijf(naam, industrie, beschrijving);
                 res.redirect('/');
-                return res.status(200).json({message: 'New bedrijf added successfully!', data: newBedrijf});
+                res.status(200).json({message: 'New bedrijf added successfully!', data: newBedrijf});
+                return;
             } else {
                 console.log("Bedrijf bestaat error");
                 res.redirect('/');
-                return res.status(200).json({message: 'Bedrijf already in DB'});
+                res.status(200).json({message: 'Bedrijf already in DB'});
+                return;
             }
         } catch (err) {
             console.log("Unknown error has occurred");
