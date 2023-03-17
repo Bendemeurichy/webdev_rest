@@ -43,7 +43,10 @@ router.post('/add',
                         res.redirect('/werkzoekenden/add');
                         return;
                     }else {
-                        await createWerkzoekende(a_naam, a_email, a_competenties, a_cv);
+                        await createWerkzoekende(a_naam, a_email, a_competenties, a_cv).catch(err=>{
+                            window.alert("ongeldige email")
+                            console.error("ongeldige email")
+                            res.redirect('/werkzoekenden/add')})
                         console.log("werkzoekende toegevoegd");
                         res.redirect('/werkzoekenden');
                         return;
