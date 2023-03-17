@@ -60,3 +60,4 @@ async function removeBeoordeling(a_bedrijf, a_werknemer) {
 
 module.exports.createBedrijf = createBedrijf;
 module.exports.removeBedrijf = removeBedrijf;
+module.exports.addBeoordeling = addBeoordeling;

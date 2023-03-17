@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const {createWerknemer} = require("../public/javascripts/dbConnection/werknemerDbAccessor");
+const {addBeoordeling} = require("../public/javascripts/dbConnection/bedrijfDbAccessor");
 
 const Werknemer = require('../public/javascripts/mongomodels/werknemer');
 const {render} = require("express/lib/application");
@@ -98,6 +99,12 @@ router.post('/review/:email/:bedrijf',
         } else {
             const a_beoordeling = req.body.beoordeling;
             const a_score = req.body.score
+            const a_email = req.params.email;
+            const a_bedrijf = req.params.bedrijf;
+            const c_werknemer = await Werknemer.findOne({email:a_email});
+            const c_bedrijf = await Bedrijf.findOne({naam:a_bedrijf});
+            await addBeoordeling(c_bedrijf._id, c_werknemer._id, a_beoordeling, a_score);
+            return;
         }
     }
     );
