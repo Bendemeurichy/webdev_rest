@@ -28,7 +28,7 @@ html
                     competenties: edit_form.competenties.value.toString(),
                     cv: edit_form.cv.value.toString()
                 }
-                console.log(JSON.stringify(content));
+                console.log(content);
                 const url = `/werkzoekenden/edit/${werkmail}`;
                 fetch(url, {method: 'PATCH', body:JSON.stringify(content)})
                     .then(response => {
