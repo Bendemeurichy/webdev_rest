@@ -7,8 +7,9 @@ let mongoose = require('mongoose');
 let indexRouter = require('./routes/index');
 let usersRouter = require('./routes/users');
 let vacatureRouter = require('./routes/vacatures');
-let bedrijfRouter = require('./routes/bedrijven')
-
+let bedrijfRouter = require('./routes/bedrijven');
+let werkzoekendeRouter = require('./routes/werkzoekende');
+let recruiterRouter = require('./routes/recruiters');
 let app = express();
 
 // view engine setup
@@ -27,6 +28,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/users', usersRouter);
 app.use('/vacatures',vacatureRouter);
 app.use('/bedrijven',bedrijfRouter);
+app.use('/recruiters',recruiterRouter);
+app.use('/werkzoekende',werkzoekendeRouter);
 app.use('/', indexRouter);
 
 

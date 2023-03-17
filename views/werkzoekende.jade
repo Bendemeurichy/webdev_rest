@@ -14,10 +14,15 @@ html
                             |   #{werkz.naam}
                             br
                             b E-mail:
-                            | #{werkz.email}
+                            |   #{werkz.email}
                             b Competenties:
                             br
                             ul
                                 each comp in werkz.competenties
                                     li
-                                        p #{}
+                                        p #{comp}
+                                        br
+                            b cv:
+                            |   #{werkz.cv}
+                            br
+        a(href='/werkzoekende/add') Voeg nieuwe werkzoekende toe

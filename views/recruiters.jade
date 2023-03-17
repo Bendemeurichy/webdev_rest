@@ -1,0 +1,50 @@
+doctype html
+html
+    head
+        title Recruiters
+    body
+        button(onclick="window.location.href='/'") spek
+        h1 Alle recruiters
+        ul
+            each recruiter in recruiters
+                span
+                    li
+                        h2 #{bedrijf.naam}
+                        p
+                            b Industrie:
+                            |    #{bedrijf.industrie}
+                            br
+                            b Beschrijving:
+                            |    #{bedrijf.beschrijving}
+                            br
+                            b Aantal werknemers:
+                            |   #{bedrijf.tot_aantal_werknemers}
+                            br
+                            b Gemiddelde score:
+                            |   #{bedrijf.gem_score}
+                            br
+                            a(href='/bedrijven/overview/#{bedrijf.naam}') Bezoek bedrijf pagina
+                            br
+                            button(id=bedrijf.naam onclick=`deleteCompany('${bedrijf.naam}')`) Remove Bedrijf
+
+        a(href='/bedrijven/add') Voeg nieuw bedrijf toe
+        script.
+            function deleteCompany(companyName) {
+                const url = `/bedrijven/delete/${companyName}`;
+                fetch(url, {method: 'DELETE'})
+                    .then(response => {
+                        if (response.ok) {
+                            console.log('succesfullly deleted')
+                            // Handle successful deletion
+                            window.location.href = '/bedrijven'
+                        } else {
+                            console.error("something went wrong")
+                            window.alert('something went wrong')
+                            window.location.href = '/bedrijven'
+                            // Handle error response
+                        }
+                    })
+                    .catch(err => {
+                        // Handle network or other error
+                    });
+            }
