@@ -9,7 +9,7 @@ const mongoose = require("mongoose");
 /* GET bedrijven overview */
 router.get('/', async function(req, res) {
     try {
-        const dbRecruiters = await Recruiter.find();
+        const dbRecruiters = await Recruiter.find().populate('bedrijf');
         res.render('recruiters', {recruiters: dbRecruiters});
     } catch (err) {
         console.error(err);

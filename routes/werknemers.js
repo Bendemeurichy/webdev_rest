@@ -18,8 +18,8 @@ router.get('/', async function(req, res) {
     }
 });
 
-router.get('/add', async function(req, res) {
-    res.render('addWerknemer')
+router.get('/add', function(req, res) {
+    res.render('addWerknemer');
 });
 
 router.post('/add',
@@ -31,7 +31,7 @@ router.post('/add',
         const errors = validationResult(req);
         if (! errors.isEmpty()) {
             const errorMessages = errors.array().map(error => error.msg);
-            return res.render('addWerkzoekende',{errors:errorMessages})
+            return res.render('addWerknemer',{errors:errorMessages})
         } else {
             const a_naam = req.body.naam;
             const a_email = req.body.email;
