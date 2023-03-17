@@ -88,6 +88,12 @@ router.get('/review/:email/:bedrijf', async (req, res) => {
     }
 })
 
-router.post('/review/:email/:bedrijf')
+router.post('/review/:email/:bedrijf',
+    body('beoordeling').trim().isLength({min:1}).withMessage('Naam is verplicht').escape(),
+    body('score').trim().isLength({min:1}).withMessage('email is verplicht').escape(),
+    async (req, res) => {
+        
+    }
+    );
 
 module.exports = router;
