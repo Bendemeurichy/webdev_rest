@@ -1,0 +1,15 @@
+doctype html
+html
+    head
+        title Beoordeling
+    body
+        h1 Schrijf uw beoordeling
+        span
+            form(method='post', action='/werknemers/:email/:bedrijf')
+                label Beoordeling:
+                input(type='text', name='beoordeling', required=true)
+                br
+                label Score(van 0-5):
+                input(type='number', min=0, max=5, name='score')
+                br
+                button(type='submit') Plaats beoordeling.

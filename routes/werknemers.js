@@ -70,9 +70,21 @@ router.post('/add',
 
 router.get('/review/:email/:bedrijf', async (req, res) => {
     try {
-        const a_email = rea
-        const werknemer = Werknemer.findOne({email:})
-        Beoordeling.findOne({email})
+        const a_email = req.params.email;
+        const a_bedrijf = req.params.bedrijf;
+        const c_werknemer = await Werknemer.findOne({email:a_email});
+        const c_bedrijf = await Bedrijf.findOne({naam:a_bedrijf});
+        Beoordeling.findOne({bedrijf: c_bedrijf._id, werknemer: c_werknemer._id}).then(beoord => {
+            if (beoord) {
+                console.log('gebruiker heeft al een beoordeling geplaatst');
+                res.redirect('/werknemers');
+                return
+            } else {
+                res.render('addBeoordeling');
+            }
+        })
+    } catch (err) {
+
     }
 })
 

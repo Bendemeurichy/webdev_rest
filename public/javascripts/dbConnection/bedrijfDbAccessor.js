@@ -25,7 +25,7 @@ async function removeBedrijf(a_naam) {
 }
 
 async function addBeoordeling(a_bedrijf, a_werknemer, a_tekst, a_score) {
-    let b = Beoordeling.findOne({naam:a_bedrijf, werknemer:a_werknemer});
+    let b = Beoordeling.findOne({bedrijf:a_bedrijf, werknemer:a_werknemer});
     if(!b) {
         if (a_score > 0 && a_score < 6) {
             b = new Beoordeling({
