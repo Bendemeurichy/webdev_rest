@@ -23,12 +23,12 @@ const bedrijfSchema = new Schema({
         require: true
     },
     vacatures: {
-        type: [Schema.Types.ObjectId],
+        type: [{type:Schema.Types.ObjectId, ref:'Vacature'}],
         ref: 'Vacature',
         require: false
     },
     beoordelingen: {
-        type: [Schema.Types.ObjectId],
+        type: [{type:Schema.Types.ObjectId, ref:'Beoordeling'}],
         ref: 'Beoordeling',
         require: false
     },

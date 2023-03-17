@@ -19,8 +19,7 @@ const recruiterSchema = new Schema({
         required: true
     },
     vacatures: {
-        type: [Schema.Types.ObjectId],
-        ref: 'Vacature',
+        type: [{type:Schema.Types.ObjectId,ref:'Vacature'}],
         required: false
     }
 });
