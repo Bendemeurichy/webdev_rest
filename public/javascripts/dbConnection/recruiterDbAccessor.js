@@ -4,12 +4,11 @@ const Vacature = require('../mongomodels/vacatures')
 const Bedrijf = require('../mongomodels/bedrijf')
 const Werkzoekende = require("../mongomodels/werkzoekende");
 const {add} = require("nodemon/lib/rules");
-async function addRecruiter(a_naam,a_email,a_bedrijf,a_vacatures){
+async function addRecruiter(a_naam,a_email,a_bedrijf){
     let recruiter = new Recruiter({
         naam:a_naam,
         email:a_email,
-        bedrijf:Bedrijf.findOne({naam:a_bedrijf}),
-        vacatures:a_vacatures
+        bedrijf:Bedrijf.findOne({_id:a_bedrijf}),
     });
     await recruiter.save();
     console.log(`recruiter with email ${a_email} has been saved`)

@@ -46,7 +46,7 @@ router.post('/add',
 
             const a_naam = req.body.naam;
             const a_email = req.body.email;
-            const a_bedrijf = Bedrijf.findOne({_id:req.body.bedrijf});
+            const a_bedrijf = req.body.bedrijf;
             try {
                 Recruiter.findOne({email:a_email}).then(async bedrijf=>{
                     if(bedrijf){
@@ -54,8 +54,8 @@ router.post('/add',
                         res.redirect('/recruiters/add');
                         return;
                     }else {
-                        await addRecruiter(a_naam, a_email, a_bedrijf.naam);
-                        console.log("bedrijf toegevoegd");
+                        await addRecruiter(a_naam, a_email, a_bedrijf);
+                        console.log("recruiter toegevoegd");
                         res.redirect('/recruiters');
                         return;
                     }});
