@@ -62,7 +62,7 @@ router.post('/add',
                             console.error('invalid email')
                             res.redirect(445,'werkzoekenden/add')
                         } else {
-                            console.log(a_email)
+
                             await createWerkzoekende(a_naam, a_email, a_competenties, a_cv).catch(err=>{throw err})
                             console.log("werkzoekende toegevoegd");
                             res.redirect('/werkzoekenden');
