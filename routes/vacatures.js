@@ -64,7 +64,7 @@ router.post('/new',
         const { recruiter, bedrijf, beschrijving, eisen, salarisstart, salariseind, gepubliceerd, deadline } = req.body;
 
         try {
-            const newVacature = await addVacature(recruiter, bedrijf, beschrijving, eisen.split(','), salarisstart, salariseind, gepubliceerd.toDate(), deadline.toDate());
+            const newVacature = await addVacature(recruiter, bedrijf, beschrijving, eisen.split(','), salarisstart, salariseind, gepubliceerd, deadline);
             res.redirect('/')
             return res.status(200).json({ message: 'New vacature added successfully!', data: newVacature });
         } catch (error) {

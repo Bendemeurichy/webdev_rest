@@ -92,7 +92,13 @@ router.post('/review/:email/:bedrijf',
     body('beoordeling').trim().isLength({min:1}).withMessage('Naam is verplicht').escape(),
     body('score').trim().isLength({min:1}).withMessage('email is verplicht').escape(),
     async (req, res) => {
-        
+        if (! errors.isEmpty()) {
+            const errorMessages = errors.array().map(error => error.msg);
+            return res.render('addBeoordeling',{errors:errorMessages})
+        } else {
+            const a_beoordeling = req.body.beoordeling;
+            const a_score = req.body.score
+        }
     }
     );
 
