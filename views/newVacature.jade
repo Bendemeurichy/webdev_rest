@@ -6,7 +6,7 @@ body
     button(onclick="window.location.href='/vacatures'") back
 
     span
-        form(method='POST', action='/vacatures/new', onsubmit="return validateForm())
+        form(method='POST', action='/vacatures/new', onsubmit="return validateForm()")
             label(for='recruiter') Recruiter:
             select(name='recruiter', required=true)
                 each recruiter in recruiters
