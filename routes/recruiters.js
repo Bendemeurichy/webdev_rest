@@ -4,6 +4,7 @@ const Bedrijf = require('../public/javascripts/mongomodels/bedrijf');
 const Recruiter = require('../public/javascripts/mongomodels/recruiter');
 const {removeRecruiter, addRecruiter} = require('../public/javascripts/dbConnection/recruiterDbAccessor');
 const {body, validationResult} = require("express-validator");
+const mongoose = require("mongoose");
 
 /* GET bedrijven overview */
 router.get('/', async function(req, res) {
@@ -46,7 +47,7 @@ router.post('/add',
 
             const a_naam = req.body.naam;
             const a_email = req.body.email;
-            const a_bedrijf = req.body.bedrijf;
+            const a_bedrijf = mongoose.Types.ObjectId(req.body.bedrijf);
             try {
                 Recruiter.findOne({email:a_email}).then(async bedrijf=>{
                     if(bedrijf){

@@ -21,7 +21,7 @@ const recruiterSchema = new Schema({
     vacatures: {
         type: [Schema.Types.ObjectId],
         ref: 'Vacature',
-        require: false
+        required: false
     }
 });
 
