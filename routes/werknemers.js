@@ -20,7 +20,7 @@ router.get('/', async function(req, res) {
 
 router.get('/add', async function(req, res) {
     const bedrijven = await Bedrijf.find();
-    res.render('addWerknemer',{bedrijven});
+    res.render('addWerknemer',{bedrijven:bedrijven});
 });
 
 router.post('/add',
