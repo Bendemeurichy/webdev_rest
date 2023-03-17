@@ -4,7 +4,7 @@ const Bedrijf = require('../mongomodels/bedrijf');
 
 async function createWerknemer(a_naam, a_email, a_bedrijf, a_functie) {
     let valid=a_email.match(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/);
-    let comp = Bedrijf.findOne({naam:a_naam})
+    let comp = Bedrijf.findOne({naam:a_bedrijf});
     if(! valid){throw new Error("Invalid email")};
 
     let werknemer = new Werknemer({
