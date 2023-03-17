@@ -25,6 +25,7 @@ router.get('/add' , async (req, res) => {
 
 router.get('/edit/:email', async (req, res) => {
     const a_email = req.params.email;
+    console.log(a_email)
     const a_werkzoekende = await Werkzoekende.findOne({email: a_email});
     const a_c_string = a_werkzoekende.competenties.join(',');
     res.render('editWerkzoekende', {email: a_werkzoekende.email, naam: a_werkzoekende.naam, cv: a_werkzoekende.cv, c_string: a_c_string});
