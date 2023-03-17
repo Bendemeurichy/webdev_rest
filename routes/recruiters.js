@@ -43,22 +43,22 @@ router.post('/add',
         const errors = validationResult(req);
         if (! errors.isEmpty()) {
             const errorMessages = errors.array().map(error => error.msg);
-            return res.render('addBedrijf',{errors:errorMessages})
+            return res.render('addRecruiter',{errors:errorMessages})
         } else {
 
             const a_naam = req.body.naam;
-            const a_industrie = req.body.industrie;
-            const a_beschrijving = req.body.beschrijving;
+            const a_email = req.body.email;
+            const a_bedrijf = req.body.bedrijf;
             try {
-                Bedrijf.findOne({naam:a_naam}).then(async bedrijf=>{
+                Recruiter.findOne({email:a_email}).then(async bedrijf=>{
                     if(bedrijf){
-                        console.log("Bedrijf bestaat error");
-                        res.redirect('/bedrijven/add');
+                        console.log("recruiter bestaat error");
+                        res.redirect('/recruiters/add');
                         return;
                     }else {
-                        await createBedrijf(a_naam, a_industrie, a_beschrijving);
+                        await createBedrijf(a_naam, a_email, a_bedrijf);
                         console.log("bedrijf toegevoegd");
-                        res.redirect('/bedrijven');
+                        res.redirect('/recruiters');
                         return;
                     }});
             } catch (err) {
@@ -70,10 +70,10 @@ router.post('/add',
     });
 
 router.delete('/delete/:id',async(req,res)=>{
-    const bedrijfid = req.params.id;
-    console.log(bedrijfid+ 'delete called')
+    const email = req.params.id;
+    console.log(email+ 'delete called')
     try{
-        await removeBedrijf(bedrijfid)
+        await removeRecruiter(email)
         return res.status(200).json({message:'deleted succesfully'});
     }catch(err){
         console.log("Unknown error has occurred");

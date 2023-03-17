@@ -25,6 +25,7 @@ html
                             a(href="#{werkz.cv.replace(/&#x2F;/g,'/')}", target="_blank") CV: #{werkz.cv.replace(/&#x2F;/g,'/')}
                             br
                             a(href='/werkzoekenden/edit/'+werkz.email) Pas deze werkzoekende aan.
+                            br
                             button(id=werkz.email onclick=`deleteWerkzoekende('${werkz.email}')`) Verwijder werkzoekende
         a(href='/werkzoekenden/add') Voeg nieuwe werkzoekende toe
 
@@ -36,11 +37,11 @@ html
                         if (response.ok) {
                             console.log('succesfullly deleted')
                             // Handle successful deletion
-                            window.location.href = '/bedrijven'
+                            window.location.href = '/werkzoekenden'
                         } else {
                             console.error("something went wrong")
                             window.alert('something went wrong')
-                            window.location.href = '/bedrijven'
+                            window.location.href = '/werkzoekenden'
                             // Handle error response
                         }
                     })
