@@ -27,6 +27,7 @@ async function removeBedrijf(a_naam) {
 async function addBeoordeling(a_bedrijf, a_werknemer, a_tekst, a_score) {
     let b = Beoordeling.findOne({bedrijf:a_bedrijf, werknemer:a_werknemer});
     if(!b) {
+        console.log('no duplicates found')
         if (a_score > 0 && a_score < 6) {
             console.log('adding beoordeling')
             b = new Beoordeling({
