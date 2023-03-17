@@ -29,9 +29,8 @@ router.get('/overview/:bedrijf', async(req, res) => {
                 path: 'beoordelingen.list',
                 select: 'text score',
                 model: 'Beoordeling'
-            })
-            .exec();
-        console.log(requested.beoordelingen)
+            });
+        console.log(requested.beoordelingen.list)
         res.render('bedrijfOverview', {bedrijf: requested});
     } catch (err) {
         console.error(err);
