@@ -37,7 +37,7 @@ async function addBeoordeling(a_bedrijf, a_werknemer, a_tekst, a_score) {
 
             let bedrijf = await Bedrijf.findOne({naam: a_bedrijf});
             bedrijf.beoordelingen.push(b);
-
+            console.log("beoordeling toegevoegd aan bedrijf")
             //Calculating new avg score
             const b_beoordelingen = bedrijf.beoordelingen;
             var newScore = 0;
