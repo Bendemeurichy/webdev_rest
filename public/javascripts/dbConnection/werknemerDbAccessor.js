@@ -13,7 +13,7 @@ async function createWerknemer(a_naam, a_email, a_bedrijf, a_functie) {
         werknemer_bedrijf: comp,
         werknemer_functie: a_functie
     });
-    await comp.update({tot_aantal_werknemers:comp.tot_aantal_werknemers+1});
+    await comp.tot_aantal_werknemers = comp.tot_aantal_werknemers + 1;
     await comp.save();
     await werknemer.save();
 }
@@ -21,7 +21,7 @@ async function createWerknemer(a_naam, a_email, a_bedrijf, a_functie) {
 async function removeWerknemer(a_mail) {
     let nemer = Werknemer.findOne({email:a_mail});
     let gever = Bedrijf.findOne({_id:nemer.bedrijf});
-    gever.update({tot_aantal_werknemers:gever.tot_aantal_werknemers-1});
+    gever.tot_aantal_werknemers=gever.tot_aantal_werknemers-1;
     await gever.save();
     await nemer.delete();
     console.log(`werkzoekende with email ${a_email} has been deleted`);
