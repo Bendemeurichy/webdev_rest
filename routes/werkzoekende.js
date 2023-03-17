@@ -1,6 +1,6 @@
 var express = require('express');
-const Werkzoekende = require("../public/javascripts/mongomodels/werkzoekende");
 var router = express.Router();
+const Werkzoekende = require("../public/javascripts/mongomodels/werkzoekende");
 
 /* GET werkzoekende overview */
 router.get('/', async function(req, res) {
@@ -12,3 +12,5 @@ router.get('/', async function(req, res) {
         res.status(500).send('Server error');
     }
 });
+
+module.exports = router;

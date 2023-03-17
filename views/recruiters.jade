@@ -9,23 +9,17 @@ html
             each recruiter in recruiters
                 span
                     li
-                        h2 #{bedrijf.naam}
+                        h2 #{recruiter.naam}
                         p
-                            b Industrie:
-                            |    #{bedrijf.industrie}
+                            b email:
+                            |    #{recruiter.email}
                             br
-                            b Beschrijving:
-                            |    #{bedrijf.beschrijving}
+                            b Bedrijf:
+                            |    #{recruiter.bedrijf}
                             br
-                            b Aantal werknemers:
-                            |   #{bedrijf.tot_aantal_werknemers}
+                            a(href='/bedrijven/overview/#{recruiter.naam}') Bezoek recruiter pagina
                             br
-                            b Gemiddelde score:
-                            |   #{bedrijf.gem_score}
-                            br
-                            a(href='/bedrijven/overview/#{bedrijf.naam}') Bezoek bedrijf pagina
-                            br
-                            button(id=bedrijf.naam onclick=`deleteCompany('${bedrijf.naam}')`) Remove Bedrijf
+                            button(id=recruiter.naam onclick=`deleteCompany('${bedrijf.naam}')`) Remove Bedrijf
 
         a(href='/bedrijven/add') Voeg nieuw bedrijf toe
         script.
