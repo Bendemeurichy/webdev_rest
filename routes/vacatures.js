@@ -48,7 +48,7 @@ router.get('/new', async (req, res) => {
 
 // Define a route for processing the form submission
 router.post('/new',
-    body('beschrijving','can\'t be empty').trim().isLength({min:1}).withMessage('Beschrijving is verplicht').isAlpha().withMessage("enkel letters en getallen zijn toegelaten").escape(),
+    body('beschrijving','can\'t be empty').trim().isLength({min:1}).withMessage('Beschrijving is verplicht').escape(),
     body('eisen','can\'t be empty').trim().isLength({min:1}).withMessage('eisen is verplicht').escape(),
     body('salarisstart','can\'t be empty').notEmpty().withMessage('Salaris start is verplicht').isNumeric().withMessage('Salaris start moet een nummer zijn').escape(),
     body('salariseind','can\'t be empty').notEmpty().withMessage('Salaris einde is verplicht').isNumeric().withMessage('Salaris einde moet een nummer zijn').escape(),

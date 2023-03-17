@@ -16,6 +16,27 @@ html
                         #{vacature.eisen}
                         span salaris= #{vacature.salaris.start} - #{vacature.salaris.end}
                         span gepubliceerd op:#{vacature.publicatiedatum.toLocaleDateString()}, reageer voor: #{vacature.deadline.toLocaleDateString()}
+                        button(id=vacature._id onclick=`deleteVacature('${vacature._id}')`) Remove Vacature
+
         div(style='text-align:center;')
             a(href='/vacatures/new') Create New Vacature
-
+    script.
+        function deleteVacature(vacatuerId) {
+            const url = `/bedrijven/delete/${vacatuerId}`;
+            fetch(url, {method: 'DELETE'})
+                .then(response => {
+                    if (response.ok) {
+                        console.log('succesfullly deleted')
+                        // Handle successful deletion
+                        window.location.href = '/vacatures'
+                    } else {
+                        console.error("something went wrong")
+                        window.alert('something went wrong')
+                        window.location.href = '/vacatures'
+                        // Handle error response
+                    }
+                })
+                .catch(err => {
+                    // Handle network or other error
+                });
+        }

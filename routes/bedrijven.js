@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const Bedrijf = require('../public/javascripts/mongomodels/bedrijf');
+const Beoordeling = require('../mongomodels/beoordeling');
 const {removeBedrijf, createBedrijf} = require('../public/javascripts/dbConnection/bedrijfDbAccessor');
 const {body, validationResult} = require("express-validator");
 
@@ -24,7 +25,8 @@ router.get('/overview/:bedrijf', async(req, res) => {
     console.log(bedrijfNaam);
     try {
         const requested = await Bedrijf.findOne({naam: bedrijfNaam});
-        res.render('bedrijfOverview', {bedrijf: requested});
+        const reviews = await Beoordeling.find({bedrijf: requested._id});
+        res.render('bedrijfOverview', {bedrijf: requested, beoordelingen: reviews});
     } catch (err) {
         console.error(err);
         res.status(500).send('Server error');

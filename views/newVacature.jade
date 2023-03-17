@@ -8,31 +8,35 @@ body
     span
         form(method='POST', action='/vacatures/new',)
             label(for='recruiter') Recruiter:
-            select(name='recruiter')
+            select(name='recruiter', required=true)
                 each recruiter in recruiters
                     option(value=`${recruiter._id}`) #{recruiter.name}
             br
             label(for='bedrijf') Bedrijf:
-            select(name='bedrijf')
+            select(name='bedrijf', required=true)
                 each bedrijf in bedrijven
                     option(value=`${bedrijf._id}`) #{bedrijf.name}
             br
             label(for='beschrijving') Beschrijving:
-            input(type='text', name='beschrijving')
+            input(type='text', name='beschrijving', required=true)
             br
             label(for='eisen') Eisen (scheid eisen met ,):
-            input(type='text', name='eisen')
+            input(type='text', name='eisen', required=true)
             br
             label(for='salarisstart') Salaris Start:
-            input(type='number', name='salarisstart')
+            input(type='number', name='salarisstart', required=true)
             br
             label(for='salariseind') Salaris Einde:
-            input(type='number', name='salariseind')
+            input(type='number', name='salariseind', required=true)
             br
             label(for='gepubliceerd') Gepubliceerd:
-            input(type='date', name='gepubliceerd')
+            input(type='date', name='gepubliceerd', required=true)
             br
             label(for='deadline') Deadline:
-            input(type='date', name='deadline')
+            input(type='date', name='deadline', required=true)
             br
             button(type='submit') Create Vacature
+        if errors
+            ul
+                for error in errors
+                    li #{error}

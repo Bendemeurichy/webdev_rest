@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Bedrijf = require('../mongomodels/bedrijf');
-const Beoordeling = require('../mongomodels/beoordeling')
+const Beoordeling = require('../mongomodels/beoordeling');
+const Werknemer = require('../mongomodels/werknemer');
 
 async function createBedrijf(a_naam, a_industrie, a_beschrijving) {
     let bedrijf = new Bedrijf({
@@ -15,8 +16,11 @@ async function createBedrijf(a_naam, a_industrie, a_beschrijving) {
 }
 
 async function removeBedrijf(a_naam) {
-
-    await Bedrijf.findOneAndDelete({naam: a_naam});
+    const bedrijf = await Bedrijf.findOne({naam: a_naam});
+    await Werknemer.deleteMany({bedrijf:bedrijf._id});
+    console.log('all werknemers were deleted');
+    await Beoordeling.deleteMany({bedrijf:bedrijf._id});
+    await Bedrijf.findOneAndRemove({naam:a_naam});
     console.log(`removed bedrijf with name ${a_naam}`);
 }
 
@@ -33,7 +37,14 @@ async function addBeoordeling(a_bedrijf, a_werknemer, a_tekst, a_score) {
 
             let bedrijf = Bedrijf.findOne({naam: a_bedrijf});
             bedrijf.beoordelingen.push(b);
-            bedrijf.update({score: ((bedrijf.gem_score + a_score) / 2)});
+
+            //Calculating new avg score
+            const b_beoordelingen = Beoordeling.find({bedrijf: bedrijf._id});
+            var newScore = 0;
+            b_beoordelingen.forEach(b => newScore+b);
+            newScore = newScore / b_beoordelingen.length;
+
+            bedrijf.update({score: newScore});
             await bedrijf.save();
             console.log(`beoordeling for bedrijf ${a_bedrijf.naam} form ${a_werknemer.email} has been added.`);
         }

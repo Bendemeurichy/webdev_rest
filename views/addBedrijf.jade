@@ -9,13 +9,13 @@ html
             form(method='post', action='/bedrijven/add')
                 label(for='naam') Bedrijfsnaam:
                 input(type='text', name='naam', required=true)
-
+                br
                 label(for='industrie') Industrie gebied van het bedrijf:
                 input(type='text', name='industrie', required=true)
-
+                br
                 label(for='beschrijving') Korte beschrijving: 
                 textarea(id="beschrijving", name='beschrijving', required=true)
-
+                br
                 button(type='submit') Add bedrijf
 
         if errors
