@@ -4,6 +4,7 @@ var router = express.Router();
 const Werknemer = require('../public/javascripts/mongomodels/werknemer');
 const {render} = require("express/lib/application");
 const {body, validationResult} = require("express-validator");
+const Bedrijf = require('../public/javascripts/mongomodels/bedrijf');
 
 /* GET bedrijven overview */
 router.get('/', async function(req, res) {
@@ -42,7 +43,7 @@ router.post('/add',
                         res.redirect('/werknemers/add');
                         return;
                     } else {
-                        
+                        Bedrijf.findOne({naam: a_bedrijf}).then(async bd)
                     }
                 });
             } catch (err) {
