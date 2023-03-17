@@ -56,7 +56,7 @@ router.post('/add',
                         res.redirect('/recruiters/add');
                         return;
                     }else {
-                        await createBedrijf(a_naam, a_email, a_bedrijf);
+                        await addRecruiter(a_naam, a_email, a_bedrijf);
                         console.log("bedrijf toegevoegd");
                         res.redirect('/recruiters');
                         return;
