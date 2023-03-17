@@ -20,8 +20,9 @@ router.get('/add' , async (req, res) => {
 });
 
 router.get('/edit/:email', async (req, res) => {
-    const werkzoekende = await Werkzoekende.findOne()
-    res.render()
+    const a_email = req.params.email;
+    const a_werkzoekende = await Werkzoekende.findOne({email: a_email});
+    res.render('editWerkzoekende', {werkzoekende: a_werkzoekende});
 });
 
 router.post('/add',
@@ -48,14 +49,16 @@ router.post('/add',
                         res.redirect('/werkzoekenden/add');
                         return;
                     }else {
-                        await createWerkzoekende(a_naam, a_email, a_competenties, a_cv).catch(err=>{
-                            console.error("ongeldige email")
-                            return res.redirect('/werkzoekenden/add')})
+                        await createWerkzoekende(a_naam, a_email, a_competenties, a_cv).catch(err=>{throw err})
                         console.log("werkzoekende toegevoegd");
                         res.redirect('/werkzoekenden');
                         return;
                     }});
             } catch (err) {
+                if(err.message=="Invalid email"){
+                    console.error("invalid email");
+                    res.redirect('/werkzoekenden/add')
+                }
                 console.log("Unknown error has occurred");
                 res.status(500).json({ message: 'An error occurred while adding a new werkzoekende.' });
                 return
