@@ -13,8 +13,8 @@ async function createWerkzoekende(a_naam,a_email,a_competenties,a_cv){
     console.log(`new werkzoekende with email ${a_email} has been saved`);
 }
 
-async function updateWerkzoekende(a_naam, a_email, a_competenties, a_cv) {
-    const zoeker = Werkzoekende.findOne({email: a_email});
+async function updateWerkzoekende(a_naam, a_email, a_competenties, a_cv, a_old_email) {
+    const zoeker = await Werkzoekende.findOne({email: a_old_email});
     zoeker.naam = a_naam;
     zoeker.email = a_email;
     zoeker.competenties = a_competenties;

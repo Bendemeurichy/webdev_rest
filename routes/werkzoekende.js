@@ -99,25 +99,20 @@ router.patch('/edit/:email',
                 const a_cv = req.body.cv;
 
                 try {
-                    Werkzoekende.findOne({email:a_email}).then(async bedrijf=>{
-                        if(bedrijf){
-                            console.log("Aangepaste werkzoekende bestaat al error");
-                            res.redirect('/werkzoekenden');
-                            return;
-                        }else {
-                            let valid=a_email.match(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/);
-                            if(! valid){
-                                console.error('invalid email')
-                                res.redirect(445,'werkzoekenden')
-                            } else {
-                                await updateWerkzoekende(a_naam, a_email, a_competenties, a_cv).catch(err=>{throw err})
-                                console.log("werkzoekende aangepast");
-                                res.redirect('/werkzoekenden');
-                                return;}
-                        }});
+                    let valid=a_email.match(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/);
+                    if(! valid){
+                        console.error('invalid email')
+                        res.redirect(445,'werkzoekenden')
+                    } else {
+                        await updateWerkzoekende(a_naam, a_email, a_competenties, a_cv, oldEmail).catch(err=>{throw err})
+                        console.log("werkzoekende aangepast");
+                        res.redirect('/werkzoekenden');
+                        return;
+                    }
+                
                 } catch (err) {
                     console.log("Unknown error has occurred");
-                    res.status(500).json({ message: 'An error occurred while editing a new werkzoekende.' });
+                    res.status(500).json({ message: 'An error occurred while editing a werkzoekende.' });
                     return
                 }
             }
