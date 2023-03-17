@@ -11,7 +11,7 @@ html
                     input(type='text', name='naam', id='naam', required=true, value=naam)
                     br
                     label(for='email') E-mail address:
-                    input(type='text', name='naam', id='email', required=true, value=email)
+                    input(type='email', name='naam', id='email', required=true, value=email)
                     br
                     label(for='competenties') Competenties:
                     input(id="competenties", name='competenties', placeholder='gescheiden met komma. vb: Engels,Frans,Java script' , required=true, value= c_string)
@@ -23,12 +23,15 @@ html
         script.
             function editWerzoekende(werkmail) {
 
-                const content = {naam:document.getElementById('naam').toString(),
-                    email:document.getElementById('email').toString(),
-                    competenties: document.getElementById('competenties').toString(),
-                    cv: document.getElementById('cv').toString()
+                const content = {naam:document.getElementById('naam').value.toString(),
+                    email:document.getElementById('email').value.toString(),
+                    competenties: document.getElementById('competenties').value.toString(),
+                    cv: document.getElementById('cv').value.toString()
                 }
-                console.log(content);
+                console.log(document.getElementById('naam').value);
+                console.log(document.getElementById('email').value);
+                console.log(document.getElementById('competenties').value);
+                console.log(document.getElementById('cv').value);
                 const url = `/werkzoekenden/edit/${werkmail}`;
                 fetch(url, {method: 'PATCH', body:JSON.stringify(content)})
                     .then(response => {
