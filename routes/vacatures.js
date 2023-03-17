@@ -9,13 +9,8 @@ const { body, validationResult } = require("express-validator");
 /* GET home page. */
 router.get('/', async function(req, res, next) {
     try{
-        const dbvacatures = await Vacature.find();
-        for (const vacature of dbvacatures) {
-            const bedrijf = await Bedrijf.findById(vacature.bedrijf);
-            const recruiter = await Recruiter.findById(vacature.recruiter);
-            vacature.bedrijf = bedrijf.naam;
-            vacature.recruiter = recruiter.naam;
-        }
+        const dbvacatures = await Vacature.find().populate('bedrijf recruiter');
+
         res.render('vacatures', { vacatures: dbvacatures});
     } catch (err) {
         console.error(err);
