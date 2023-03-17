@@ -8,10 +8,10 @@ async function createWerknemer(a_naam, a_email, a_bedrijf, a_functie) {
     if(! valid){throw new Error("Invalid email")};
 
     let werknemer = new Werknemer({
-        werknemer_naam: a_naam,
-        werknemer_email: a_email,
-        werknemer_bedrijf: comp,
-        werknemer_functie: a_functie
+        naam: a_naam,
+        email: a_email,
+        bedrijf: comp,
+        functie: a_functie
     });
     comp.tot_aantal_werknemers = (comp.tot_aantal_werknemers + 1);
     await comp.save();
