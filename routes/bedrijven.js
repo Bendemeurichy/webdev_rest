@@ -71,8 +71,7 @@ router.delete('/delete/:id',async(req,res)=>{
     console.log(bedrijfid+ 'delete called')
     try{
         await removeBedrijf(bedrijfid)
-        res.redirect('/bedrijven')
-        return;
+        return res.status(200).json({message:'deleted succesfully'});
     }catch(err){
         console.log("Unknown error has occurred");
         res.status(500).json({ message: 'An error occurred while removing a bedrijf.' });

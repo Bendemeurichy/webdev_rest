@@ -36,8 +36,10 @@ html
                         if (response.ok) {
                             console.log('succesfullly deleted')
                             // Handle successful deletion
+                            window.location.href = '/bedrijven'
                         } else {
                             console.error("something went wrong")
+                            window.location.href = '/bedrijven'
                             // Handle error response
                         }
                     })
