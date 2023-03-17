@@ -33,8 +33,8 @@ async function addBeoordeling(a_bedrijf, a_werknemer, a_tekst, a_score) {
         if (a_score > 0 && a_score < 6) {
             console.log('adding beoordeling')
             b = new Beoordeling({
-                bedrijf: a_bedrijf,
-                werknemer: a_werknemer,
+                bedrijf: bed,
+                werknemer: nemer,
                 a_tekst: a_tekst,
                 score: a_score
             });
@@ -50,7 +50,7 @@ async function addBeoordeling(a_bedrijf, a_werknemer, a_tekst, a_score) {
 
             bedrijf.score = newScore;
             await bedrijf.save();
-            console.log(`beoordeling for bedrijf ${a_bedrijf.naam} form ${a_werknemer.email} has been added.`);
+            console.log(`beoordeling for bedrijf ${a_bedrijf} form ${a_werknemer} has been added.`);
         }
     }
 }
