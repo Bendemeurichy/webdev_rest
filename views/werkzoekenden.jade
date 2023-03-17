@@ -22,7 +22,7 @@ html
                                 each comp in werkz.competenties
                                     li
                                         p #{comp}
-                            a(href="http:://#{werkz.cv}", target="_blank") CV #{werkz.cv}
+                            a(href="http:://#{werkz.cv.toString()}", target="_blank") CV #{werkz.cv.toString()}
                             br
                             a(href='/werkzoekenden/edit/'+werkz.email) Pas deze werkzoekende aan.
         a(href='/werkzoekenden/add') Voeg nieuwe werkzoekende toe
