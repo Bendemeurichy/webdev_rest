@@ -43,7 +43,13 @@ router.post('/add',
                         res.redirect('/werknemers/add');
                         return;
                     } else {
-                        Bedrijf.findOne({naam: a_bedrijf}).then(async bd)
+                        Bedrijf.findOne({naam: a_bedrijf}).then(async bd => {
+                            if (!bd) {
+                                console.log("Bedrijf met naam ${a_bedrijf}");
+                                res.redirect('/werknemers/add');
+                                return;
+                            }
+                        })
                     }
                 });
             } catch (err) {
