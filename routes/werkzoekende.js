@@ -19,6 +19,10 @@ router.get('/add' , async (req, res) => {
     res.render('addWerkzoekende');
 });
 
+router.get('/edit/:email', (req, res) => {
+    res.render()
+});
+
 router.post('/add',
     body('naam').trim().isLength({min:1}).withMessage('Naam is verplicht').escape(),
     body('email').trim().isLength({min:1}).withMessage('email is verplicht').escape(),
@@ -44,7 +48,6 @@ router.post('/add',
                         return;
                     }else {
                         await createWerkzoekende(a_naam, a_email, a_competenties, a_cv).catch(err=>{
-                            window.alert("ongeldige email")
                             console.error("ongeldige email")
                             res.redirect('/werkzoekenden/add')})
                         console.log("werkzoekende toegevoegd");
