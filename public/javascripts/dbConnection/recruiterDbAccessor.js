@@ -20,8 +20,7 @@ async function removeRecruiter(a_email){
 }
 
 async function addVacatureToRecruiter(a_id,a_recruitermail){
-
-}try {
+    try {
     let vacatuur = await Vacature.findOne({_id:a_id});
     if(!vacatuur){
         throw new Error(`vacature with id ${a_id} could not be found`);
