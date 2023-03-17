@@ -26,3 +26,5 @@ async function removeWerknemer(a_mail) {
     await nemer.delete();
     console.log(`werkzoekende with email ${a_email} has been deleted`);
 }
+
+module.exports.createWerknemer = createWerknemer;

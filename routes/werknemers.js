@@ -18,14 +18,14 @@ router.get('/', async function(req, res) {
     }
 });
 
-router.get('/add', function(req, res) {
-    res.render('addWerknemer');
+router.get('/add', async function(req, res) {
+    const bedrijven = await Bedrijf.find();
+    res.render('addWerknemer',{bedrijven});
 });
 
 router.post('/add',
     body('naam').trim().isLength({min:1}).withMessage('Naam is verplicht').escape(),
     body('email').trim().isLength({min:1}).withMessage('email is verplicht').escape(),
-    body('bedrijf').trim().isLength({min:1}).withMessage('Competenties zijn verplicht').escape(),
     body('functie').trim().isLength({min:1}).withMessage('cv is verplicht').escape(),
     (req, res) => {
         const errors = validationResult(req);

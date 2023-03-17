@@ -12,8 +12,10 @@ html
                     label(for='email') E-mail address:
                     input(type='text', name='email', required=true)
                     br
-                    label(for='competenties') Bedrijf:
-                    input(id="competenties", name='competenties' , required=true)
+                    label(for='bedrijf') Bedrijf:
+                        select(name='bedrijf', required=true)
+                            each bedrijf in bedrijven
+                                option(value=`${bedrijf.naam}`) #{bedrijf.naam}
                     br
                     label(for='cv') Functie:
                     input(id="cv", name='cv', required=true)
