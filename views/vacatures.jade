@@ -11,11 +11,17 @@ html
             each vacature in vacatures
                 li
                     a(href=`/vacatures?v=${vacature._id}`)
+
                         span #{vacature.bedrijf} - #{vacature.recruiter}
+                        br
                         #{vacature.beschrijving}
+                        br
                         #{vacature.eisen}
+                        br
                         span salaris= #{vacature.salaris.start} - #{vacature.salaris.end}
+                        br
                         span gepubliceerd op:#{vacature.publicatiedatum.toLocaleDateString()}, reageer voor: #{vacature.deadline.toLocaleDateString()}
+                        br
                         button(id=vacature._id onclick=`deleteVacature('${vacature._id}')`) Remove Vacature
 
         div(style='text-align:center;')
