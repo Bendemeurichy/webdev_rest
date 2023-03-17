@@ -22,11 +22,11 @@ html
                     button(type='button' onclick=`editWerzoekende('${email}')`) Sla op
         script.
             function editWerzoekende(werkmail) {
-                const edit_form = document.getElementById('edit_form')
-                const content = {naam:edit_form.naam.value.toString(),
-                    email:edit_form.email.value.toString(),
-                    competenties: edit_form.competenties.value.toString(),
-                    cv: edit_form.cv.value.toString()
+
+                const content = {naam:document.getElementById('naam').value.toString(),
+                    email:document.getElementById('email').value.toString(),
+                    competenties: document.getElementById('competenties').value.toString(),
+                    cv: document.getElementById('cv').value.toString()
                 }
                 console.log(content);
                 const url = `/werkzoekenden/edit/${werkmail}`;
