@@ -7,7 +7,7 @@ const werkzoekendeSchema = new Schema({
         type: String,
         required: true
     },
-    emailadres: {
+    email: {
         type: String,
         required: true,
         unique: true
