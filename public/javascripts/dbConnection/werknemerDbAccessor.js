@@ -13,7 +13,7 @@ async function createWerknemer(a_naam, a_email, a_bedrijf, a_functie) {
         werknemer_bedrijf: comp,
         werknemer_functie: a_functie
     });
-    await comp.tot_aantal_werknemers = comp.tot_aantal_werknemers + 1;
+    comp.tot_aantal_werknemers = (comp.tot_aantal_werknemers + 1);
     await comp.save();
     await werknemer.save();
 }
