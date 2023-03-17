@@ -6,6 +6,7 @@ const Werknemer = require('../public/javascripts/mongomodels/werknemer');
 const {render} = require("express/lib/application");
 const {body, validationResult} = require("express-validator");
 const Bedrijf = require('../public/javascripts/mongomodels/bedrijf');
+const Beoordeling = require('../public/javascripts/mongomodels/beoordeling');
 
 /* GET bedrijven overview */
 router.get('/', async function(req, res) {
@@ -66,5 +67,15 @@ router.post('/add',
         }
     }
 );
+
+router.get('/review/:email/:bedrijf', async (req, res) => {
+    try {
+        const a_email = rea
+        const werknemer = Werknemer.findOne({email:})
+        Beoordeling.findOne({email})
+    }
+})
+
+router.post('/review/:email/:bedrijf')
 
 module.exports = router;

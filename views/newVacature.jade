@@ -10,12 +10,12 @@ body
             label(for='recruiter') Recruiter:
             select(name='recruiter', required=true)
                 each recruiter in recruiters
-                    option(value=`${recruiter._id}`) #{recruiter.email}
+                    option(value=`${recruiter.email}`) #{recruiter.email}
             br
             label(for='bedrijf') Bedrijf:
             select(name='bedrijf', required=true)
                 each bedrijf in bedrijven
-                    option(value=`${bedrijf._id}`) #{bedrijf.naam}
+                    option(value=`${bedrijf.naam}`) #{bedrijf.naam}
             br
             label(for='beschrijving') Beschrijving:
             input(type='text', name='beschrijving', required=true)
