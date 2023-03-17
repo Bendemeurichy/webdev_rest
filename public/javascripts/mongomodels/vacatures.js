@@ -28,13 +28,7 @@ const vacatureSchema = new Schema({
             required: true,
             min: 0,
             },
-        end:{type:Number,required:true,min:0,
-            validate: {
-                validator: function(value) {
-                    return value <= this.start;
-                },
-                message: 'Start salary must be less than or equal to end salary'
-            }},
+        end:{type:Number,required:true,min:0},
     },
     publicatiedatum:{
         type:Date,
