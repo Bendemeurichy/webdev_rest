@@ -20,9 +20,9 @@ router.get('/add', (req, res) => {
     res.render('addRecruiter');
 });
 
-router.get('/overview/:bedrijf', async(req, res) => {
-    const bedrijfNaam = req.params.bedrijf;
-    console.log(bedrijfNaam);
+router.get('/overview/:recruiter, async(req, res) => {
+    const recruitermail = req.params.recruiter;
+    console.log(recruitermail);
     try {
         const requested = await Bedrijf.findOne({naam: bedrijfNaam});
         const reviews = await Beoordeling.find({bedrijf: requested._id});

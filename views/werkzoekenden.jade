@@ -22,8 +22,7 @@ html
                                 each comp in werkz.competenties
                                     li
                                         p #{comp}
-                            b cv:
-                            |   #{werkz.cv}
+                            a(href=werkz.cv) CV
                             br
-                
+                            a(href='/werkzoekenden/'+werkz.email) Pas deze werkzoekende aan.
         a(href='/werkzoekenden/add') Voeg nieuwe werkzoekende toe

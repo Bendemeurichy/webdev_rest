@@ -8,7 +8,7 @@ const {body, validationResult} = require("express-validator");
 router.get('/', async function(req, res) {
     try {
         const dbWerkzoekende = await Werkzoekende.find();
-        res.render('werkzoekenden', {werkzoekende: dbWerkzoekende,errors:[]});
+        res.render('werkzoekenden', {werkzoekende: dbWerkzoekende});
     } catch (err) {
         console.error(err);
         res.status(500).send('Server error');
