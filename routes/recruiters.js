@@ -36,8 +36,8 @@ router.get('/overview/:recruiter', async(req, res) => {
 
 router.post('/add',
     body('naam').trim().isLength({min:1}).withMessage('Naam is verplicht').escape(),
-    body('industrie').trim().isLength({min:1}).withMessage('Industrie is verplicht').escape(),
-    body('beschrijving').trim().isLength({min:1}).withMessage('Beschrijving is verplicht').escape()
+    body('email').trim().isLength({min:1}).withMessage('Industrie is verplicht').escape(),
+    body('bedrijf').trim().isLength({min:1}).withMessage('Beschrijving is verplicht').escape()
     ,
     (req, res) => {
         const errors = validationResult(req);
