@@ -93,6 +93,7 @@ router.post('/review/:email/:bedrijf',
     body('beoordeling').trim().isLength({min:1}).withMessage('Naam is verplicht').escape(),
     body('score').trim().isLength({min:1}).withMessage('email is verplicht').escape(),
     async (req, res) => {
+        const errors = validationResult(req);
         if (! errors.isEmpty()) {
             const errorMessages = errors.array().map(error => error.msg);
             return res.render('addBeoordeling',{errors:errorMessages})
