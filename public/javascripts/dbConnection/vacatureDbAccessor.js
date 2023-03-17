@@ -15,7 +15,7 @@ async function addVacature(a_recruiter,a_bedrijf,a_beschrijving,a_eisen,a_salari
         deadline:a_deadline
     });
     await vacatuur.save();
-    alert("new vacature has been added")
+    console.log("new vacature has been added")
     console.log(`new vacature by bedrijf ${a_bedrijf} has been added`)
 }
 
