@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const Bedrijf = require('../public/javascripts/mongomodels/bedrijf');
-const Beoordeling = require('../mongomodels/beoordeling');
+const Beoordeling = require('../public/javascripts/mongomodels/beoordeling');
 const {removeBedrijf, createBedrijf} = require('../public/javascripts/dbConnection/bedrijfDbAccessor');
 const {body, validationResult} = require("express-validator");
 
