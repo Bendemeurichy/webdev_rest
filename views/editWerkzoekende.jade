@@ -6,17 +6,17 @@ html
         button(onclick="window.location.href='/'") back
         h1 Pas de gewenste velden aan en sla de veranderingen op.
         span
-            form(method='post', action='/werkzoekenden/edit/'+ )
+            form(method='post', action='/werkzoekenden/edit/'+ email)
                 label(for='naam') Voor en achternaam:
-                    input(type='text', name='naam', required=true)
+                    input(type='text', name='naam', required=true, value=naam)
                     br
                     label(for='email') E-mail address:
-                    input(type='text', name='email', required=true)
+                    input(type='text', name='email', required=true, value=email)
                     br
                     label(for='competenties') Competenties:
-                    input(id="competenties", name='competenties',placeholder='gescheiden met komma. vb: Engels,Frans,Java script' , required=true)
+                    input(id="competenties", name='competenties', placeholder='gescheiden met komma. vb: Engels,Frans,Java script' , required=true, value= c_string)
                     br
                     label(for='cv') cv:
-                    input(id="cv", name='cv', required=true, placeholder='geef een link naar bv uw linked in profiel')
+                    input(id="cv", name='cv', required=true, placeholder='geef een link naar bv uw linked in profiel', value=cv)
                     br
-                    button(type='submit') Voeg toe
+                    button(type='submit') Sla op

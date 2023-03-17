@@ -16,13 +16,18 @@ router.get('/', async function(req, res) {
 });
 
 router.get('/add' , async (req, res) => {
-    res.render('addWerkzoekende');
+    let errors =[]
+    if(res.statusCode===445){
+        errors = ["invalid email"]
+    }
+    res.render('addWerkzoekende',{errors:errors});
 });
 
 router.get('/edit/:email', async (req, res) => {
     const a_email = req.params.email;
     const a_werkzoekende = await Werkzoekende.findOne({email: a_email});
-    res.render('editWerkzoekende', {werkzoekende: a_werkzoekende});
+    const a_c_string = a_werkzoekende.competenties.join(',');
+    res.render('editWerkzoekende', {email: a_werkzoekende.email, naam: a_werkzoekende.naam, cv: a_werkzoekende.cv, c_string: a_c_string});
 });
 
 router.post('/add',
@@ -49,16 +54,17 @@ router.post('/add',
                         res.redirect('/werkzoekenden/add');
                         return;
                     }else {
+                        let valid=a_email.match(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/);
+                        if(! valid){
+                            console.error('invalid email')
+                            res.redirect(445,'werkzoekenden/add')
+                        } else {
                         await createWerkzoekende(a_naam, a_email, a_competenties, a_cv).catch(err=>{throw err})
                         console.log("werkzoekende toegevoegd");
                         res.redirect('/werkzoekenden');
-                        return;
+                        return;}
                     }});
             } catch (err) {
-                if(err.message=="Invalid email"){
-                    console.error("invalid email");
-                    res.redirect('/werkzoekenden/add')
-                }
                 console.log("Unknown error has occurred");
                 res.status(500).json({ message: 'An error occurred while adding a new werkzoekende.' });
                 return

@@ -2,8 +2,6 @@ const mongoose = require('mongoose');
 const Werkzoekende = require('../mongomodels/werkzoekende');
 const Vacature = require('../mongomodels/vacatures')
 async function createWerkzoekende(a_naam,a_email,a_competenties,a_cv){
-    let valid=a_email.match(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/);
-    if(! valid){throw new Error("Invalid email")}
     let zoeker = new Werkzoekende({
         naam:a_naam,
         email:a_email,
