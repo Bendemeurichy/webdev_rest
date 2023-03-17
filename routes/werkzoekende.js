@@ -83,11 +83,11 @@ router.patch('/edit/:email',
             const oldEmail = req.params.email;
             const old_werkzoekende = await Werkzoekende.findOne({email: oldEmail});
             const a_c_string = old_werkzoekende.competenties.join(',');
-            
-                const a_naam = req.body.naam;
-                const a_email = req.body.email;
-                const a_competenties = req.body.competenties.split(',');
-                const a_cv = req.body.cv;
+
+                const a_naam = req.body.Naam;
+                const a_email = req.body.Email;
+                const a_competenties = req.body.Competenties.split(',');
+                const a_cv = req.body.Cv;
 
                 try {
                     let valid=a_email.match(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/);
