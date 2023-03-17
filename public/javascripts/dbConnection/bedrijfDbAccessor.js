@@ -39,7 +39,7 @@ async function addBeoordeling(a_bedrijf, a_werknemer, a_tekst, a_score) {
             bedrijf.beoordelingen.push(b);
 
             //Calculating new avg score
-            const b_beoordelingen = await Beoordeling.find({bedrijf: bedrijf._id});
+            const b_beoordelingen = bedrijf.beoordelingen;
             var newScore = 0;
             b_beoordelingen.forEach(b => newScore+b);
             newScore = newScore / b_beoordelingen.length;
