@@ -42,3 +42,4 @@ async function addVacaturetoWerkzoekende(a_email,a_id){
 }
 
 
+module.exports.createWerkzoekende = createWerkzoekende;

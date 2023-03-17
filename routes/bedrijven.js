@@ -9,7 +9,7 @@ const {body, validationResult} = require("express-validator");
 router.get('/', async function(req, res) {
     try {
         const dbBedrijven = await Bedrijf.find();
-        res.render('bedrijven', {bedrijven: dbBedrijven,errors:[]});
+        res.render('bedrijven', {bedrijven: dbBedrijven});
     } catch (err) {
         console.error(err);
         res.status(500).send('Server error');

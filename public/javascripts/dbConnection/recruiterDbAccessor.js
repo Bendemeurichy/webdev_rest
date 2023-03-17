@@ -3,6 +3,7 @@ const Recruiter = require('../mongomodels/recruiter')
 const Vacature = require('../mongomodels/vacatures')
 const Bedrijf = require('../mongomodels/bedrijf')
 const Werkzoekende = require("../mongomodels/werkzoekende");
+const {add} = require("nodemon/lib/rules");
 async function addRecruiter(a_naam,a_email,a_bedrijf,a_vacatures){
     let recruiter = new Recruiter({
         naam:a_naam,
@@ -38,3 +39,6 @@ async function addVacatureToRecruiter(a_id,a_recruitermail){
 } catch(err){
     console.error(err);
 }}
+
+module.exports.addRecruiter = addRecruiter;
+module.exports.removeRecruiter = removeRecruiter;

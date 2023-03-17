@@ -2,22 +2,22 @@ var express = require('express');
 var router = express.Router();
 const Bedrijf = require('../public/javascripts/mongomodels/bedrijf');
 const Recruiter = require('../public/javascripts/mongomodels/recruiter');
-const {removeRecruiter, createRecruiter} = require('../public/javascripts/dbConnection/recruiterDbAccessor');
+const {removeRecruiter, addRecruiter} = require('../public/javascripts/dbConnection/recruiterDbAccessor');
 const {body, validationResult} = require("express-validator");
 
 /* GET bedrijven overview */
 router.get('/', async function(req, res) {
     try {
-        const dbBedrijven = await Bedrijf.find();
-        res.render('bedrijven', {bedrijven: dbBedrijven,errors:[]});
+        const dbRecruiters = await Recruiter.find();
+        res.render('recruiters', {recruiters: dbRecruiters});
     } catch (err) {
         console.error(err);
         res.status(500).send('Server error');
     }
 });
 
-router.get('/add', async (req, res) => {
-    res.render('addBedrijf');
+router.get('/add', (req, res) => {
+    res.render('addRecruiter');
 });
 
 router.get('/overview/:bedrijf', async(req, res) => {
