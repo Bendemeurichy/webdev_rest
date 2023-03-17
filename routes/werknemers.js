@@ -51,6 +51,9 @@ router.post('/add',
                                 return;
                             } else {
                                 await createWerknemer(a_naam, a_email, a_bedrijf, a_functie).catch(err=>{throw err});
+                                console.log("werknemer toegevoegd");
+                                res.redirect('/werknemers');
+                                return;
                             }
                         });
                     }
