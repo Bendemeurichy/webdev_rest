@@ -15,7 +15,7 @@ html
                             |    #{recruiter.email}
                             br
                             b Bedrijf:
-                            |    #{Bedrijf.findOne({_id: recruiter.bedrijf})}
+                            |    #{recruiter.bedrijf}
                             br
                             a(href='/bedrijven/overview/#{recruiter.naam}') Bezoek recruiter pagina
                             br
@@ -23,7 +23,6 @@ html
 
         a(href='/recruiters/add') Voeg nieuwe recruiter toe
         script.
-            const Bedrijf = require('../public/javascripts/mongomodels/bedrijf')
             function deleteRecruiter(email) {
                 const url = `/recruiters/delete/${email}`;
                 fetch(url, {method: 'DELETE'})
