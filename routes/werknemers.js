@@ -10,7 +10,7 @@ const Bedrijf = require('../public/javascripts/mongomodels/bedrijf');
 /* GET bedrijven overview */
 router.get('/', async function(req, res) {
     try {
-        const dbWerknemers = await Werknemer.find();
+        const dbWerknemers = await Werknemer.find().populate('bedrijf');
         res.render('werknemers', {werknemers: dbWerknemers});
     } catch (err) {
         console.error(err);
