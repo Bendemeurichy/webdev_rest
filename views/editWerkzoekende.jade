@@ -28,10 +28,7 @@ html
                     competenties: document.getElementById('competenties').value.toString(),
                     cv: document.getElementById('cv').value.toString()
                 }
-                console.log(document.getElementById('naam').value);
-                console.log(document.getElementById('email').value);
-                console.log(document.getElementById('competenties').value);
-                console.log(document.getElementById('cv').value);
+
                 const url = `/werkzoekenden/edit/${werkmail}`;
                 fetch(url, {method: 'PATCH', body:JSON.stringify(content)})
                     .then(response => {

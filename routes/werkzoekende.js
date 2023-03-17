@@ -81,7 +81,7 @@ router.post('/add',
 router.patch('/edit/:email',
         async (req, res) => {
             const oldEmail = req.params.email;
-            console.log(req.body)
+            console.log(req.body.toString())
                 const a_naam = req.body.naam;
                 const a_email = req.body.email;
                 const a_competenties = req.body.competenties.split(',');
