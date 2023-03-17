@@ -22,7 +22,7 @@ html
                         br
                         span gepubliceerd op:#{vacature.publicatiedatum.toLocaleDateString()}, reageer voor: #{vacature.deadline.toLocaleDateString()}
                         br
-                        button(id=vacature._id onclick=`deleteVacature('${vacature._id}')`) Remove Vacature
+                    button(id=vacature._id onclick=`deleteVacature('${vacature._id}')`) Remove Vacature
 
         div(style='text-align:center;')
             a(href='/vacatures/new') Create New Vacature
