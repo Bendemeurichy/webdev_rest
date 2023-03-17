@@ -19,7 +19,8 @@ router.get('/add' , async (req, res) => {
     res.render('addWerkzoekende');
 });
 
-router.get('/edit/:email', (req, res) => {
+router.get('/edit/:email', async (req, res) => {
+    const werkzoekende = await Werkzoekende.findOne()
     res.render()
 });
 
@@ -49,7 +50,7 @@ router.post('/add',
                     }else {
                         await createWerkzoekende(a_naam, a_email, a_competenties, a_cv).catch(err=>{
                             console.error("ongeldige email")
-                            res.redirect('/werkzoekenden/add')})
+                            return res.redirect('/werkzoekenden/add')})
                         console.log("werkzoekende toegevoegd");
                         res.redirect('/werkzoekenden');
                         return;
