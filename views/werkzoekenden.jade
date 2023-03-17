@@ -25,4 +25,26 @@ html
                             a(href="#{werkz.cv.replace(/&#x2F;/g,'/')}", target="_blank") CV: #{werkz.cv.replace(/&#x2F;/g,'/')}
                             br
                             a(href='/werkzoekenden/edit/'+werkz.email) Pas deze werkzoekende aan.
+                            button(id=werkz.email onclick=`deleteWerkzoekende('${werkz.email}')`) Verwijder werkzoekende
         a(href='/werkzoekenden/add') Voeg nieuwe werkzoekende toe
+
+        script.
+            function deleteCompany(companyName) {
+                const url = `/bedrijven/delete/${companyName}`;
+                fetch(url, {method: 'DELETE'})
+                    .then(response => {
+                        if (response.ok) {
+                            console.log('succesfullly deleted')
+                            // Handle successful deletion
+                            window.location.href = '/bedrijven'
+                        } else {
+                            console.error("something went wrong")
+                            window.alert('something went wrong')
+                            window.location.href = '/bedrijven'
+                            // Handle error response
+                        }
+                    })
+                    .catch(err => {
+                        // Handle network or other error
+                    });
+            }
