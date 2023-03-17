@@ -1,7 +1,8 @@
 var express = require('express');
 var router = express.Router();
 const Werkzoekende = require("../public/javascripts/mongomodels/werkzoekende");
-const {createWerkzoekende} = require("../public/javascripts/dbConnection/werkzoekendeDbAccessor")
+const {createWerkzoekende} = require("../public/javascripts/dbConnection/werkzoekendeDbAccessor");
+const {updateWerkzoekende} = require("../public/javascripts/dbConnection/werkzoekendeDbAccessor");
 const {body, validationResult} = require("express-validator");
 
 /* GET werkzoekende overview */
@@ -110,14 +111,14 @@ router.patch('/edit/:email',
                                 res.redirect(445,'werkzoekenden')
                             } else {
 
-                                await createWerkzoekende(a_naam, a_email, a_competenties, a_cv).catch(err=>{throw err})
+                                await updateWerkzoekende(a_naam, a_email, a_competenties, a_cv).catch(err=>{throw err})
                                 console.log("werkzoekende aangepast");
                                 res.redirect('/werkzoekenden');
                                 return;}
                         }});
                 } catch (err) {
                     console.log("Unknown error has occurred");
-                    res.status(500).json({ message: 'An error occurred while adding a new werkzoekende.' });
+                    res.status(500).json({ message: 'An error occurred while editing a new werkzoekende.' });
                     return
                 }
             }

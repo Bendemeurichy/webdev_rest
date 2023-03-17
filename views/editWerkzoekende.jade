@@ -20,29 +20,29 @@ html
                     input(id="cv", name='cv', required=true, placeholder='geef een link naar bv uw linked in profiel', value=cv)
                     br
                     button(type='button' onclick=`editWerzoekende('${werkz.email}')`) Sla op
-    script.
-        function editWerzoekende(werkmail) {
+        script.
+            function editWerzoekende(werkmail) {
 
-            const content = {Naam:edit_form.naam.value.toString(),
-                Email:edit_form.email.value.toString(),
-                Competenties: edit_form.competenties.value.toString(),
-                Cv: edit_form.cv.value.toString()
+                const content = {Naam:edit_form.naam.value.toString(),
+                    Email:edit_form.email.value.toString(),
+                    Competenties: edit_form.competenties.value.toString(),
+                    Cv: edit_form.cv.value.toString()
+                }
+                const url = `/werkzoekenden/edit/${werkmail}`;
+                fetch(url, {method: 'PATCH',body:JSON.stringify(content)})
+                    .then(response => {
+                        if (response.ok) {
+                            console.log('succesfullly deleted')
+                            // Handle successful deletion
+                            window.location.href = '/bedrijven'
+                        } else {
+                            console.error("something went wrong")
+                            window.alert('something went wrong')
+                            window.location.href = '/bedrijven'
+                            // Handle error response
+                        }
+                    })
+                    .catch(err => {
+                        // Handle network or other error
+                    });
             }
-            const url = `/werkzoekenden/edit/${werkmail}`;
-            fetch(url, {method: 'PATCH',body:JSON.stringify(content)})
-                .then(response => {
-                    if (response.ok) {
-                        console.log('succesfullly deleted')
-                        // Handle successful deletion
-                        window.location.href = '/bedrijven'
-                    } else {
-                        console.error("something went wrong")
-                        window.alert('something went wrong')
-                        window.location.href = '/bedrijven'
-                        // Handle error response
-                    }
-                })
-                .catch(err => {
-                    // Handle network or other error
-                });
-        }
