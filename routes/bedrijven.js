@@ -25,6 +25,7 @@ router.get('/overview/:bedrijf', async(req, res) => {
     console.log(bedrijfNaam);
     try {
         const requested = await Bedrijf.findOne({naam: bedrijfNaam}).populate('beoordelingen.list');
+        console.log(requested.beoordelingen)
         res.render('bedrijfOverview', {bedrijf: requested});
     } catch (err) {
         console.error(err);
