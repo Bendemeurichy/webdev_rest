@@ -10,6 +10,7 @@ let vacatureRouter = require('./routes/vacatures');
 let bedrijfRouter = require('./routes/bedrijven');
 let werkzoekendeRouter = require('./routes/werkzoekende');
 let recruiterRouter = require('./routes/recruiters');
+let werknemerRouter = require('./routes/werknemers');
 let app = express();
 
 // view engine setup
@@ -29,6 +30,7 @@ app.use('/vacatures',vacatureRouter);
 app.use('/bedrijven',bedrijfRouter);
 app.use('/recruiters',recruiterRouter);
 app.use('/werkzoekenden',werkzoekendeRouter);
+app.use('/werknemers',werknemerRouter);
 app.use('/', indexRouter);
 
 
