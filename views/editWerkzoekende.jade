@@ -30,7 +30,9 @@ html
                 }
 
                 const url = `/werkzoekenden/edit/${werkmail}`;
-                fetch(url, {method: 'PATCH', body:JSON.stringify(content)})
+                fetch(url, {method: 'PATCH', headers: {
+                        'Content-Type': 'application/json'
+                    }, body:JSON.stringify(content)})
                     .then(response => {
                         if (response.ok) {
                             console.log('succesfullly updated')
