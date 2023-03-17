@@ -30,7 +30,7 @@ router.get('/overview/:bedrijf', async(req, res) => {
                 select: 'text score',
                 model: 'Beoordeling'
             });
-        console.log(requested.beoordelingen.list)
+        console.log(requested.beoordelingen)
         res.render('bedrijfOverview', {bedrijf: requested});
     } catch (err) {
         console.error(err);
