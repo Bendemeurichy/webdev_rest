@@ -20,7 +20,7 @@ router.get('/add', (req, res) => {
     res.render('addRecruiter');
 });
 
-router.get('/overview/:recruiter, async(req, res) => {
+router.get('/overview/:recruiter', async(req, res) => {
     const recruitermail = req.params.recruiter;
     console.log(recruitermail);
     try {
