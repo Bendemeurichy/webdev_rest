@@ -6,7 +6,7 @@ async function createWerkzoekende(a_naam,a_email,a_competenties,a_cv){
     if(! valid){throw new Error("Invalid email")}
     let zoeker = new Werkzoekende({
         naam:a_naam,
-        emailadres:a_email,
+        email:a_email,
         competenties:a_competenties,
         cv:a_cv
     });
@@ -16,13 +16,13 @@ async function createWerkzoekende(a_naam,a_email,a_competenties,a_cv){
 }
 
 async function removeWerkzoekende(a_email){
-    await Werkzoekende.findOneAndDelete({emailadres:a_email});
+    await Werkzoekende.findOneAndDelete({email:a_email});
     console.log(`werkzoekende with email ${a_email} has been deleted`);
 }
 
 async function addVacaturetoWerkzoekende(a_email,a_id){
     try {
-        let zoeker = await Werkzoekende.findOne({emailadres: a_email});
+        let zoeker = await Werkzoekende.findOne({email: a_email});
         if(!zoeker){
             throw new Error(`werkzoekende with email ${a_email} could not be found`);
         }
