@@ -25,7 +25,7 @@ router.get('/overview/:bedrijf', async(req, res) => {
     console.log(bedrijfNaam);
     try {
         const requested = await Bedrijf.findOne({naam: bedrijfNaam}).populate({path: 'beoordelingen.list', select: '_id text score'});
-
+        console.log(requested.beoordelingen)
         res.render('bedrijfOverview', {bedrijf: requested});
     } catch (err) {
         console.error(err);
