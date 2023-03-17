@@ -14,6 +14,7 @@ async function createWerkzoekende(a_naam,a_email,a_competenties,a_cv){
 }
 
 async function updateWerkzoekende(a_naam, a_email, a_competenties, a_cv, a_old_email) {
+    console.log("update called")
     const zoeker = await Werkzoekende.findOne({email: a_old_email});
     zoeker.naam = a_naam;
     zoeker.email = a_email;
