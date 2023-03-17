@@ -21,7 +21,7 @@ html
                             br
                             button(id=recruiter.naam onclick=`deleteCompany('${bedrijf.naam}')`) Remove Bedrijf
 
-        a(href='/bedrijven/add') Voeg nieuw bedrijf toe
+        a(href='/bedrijven/add') Voeg nieuwe recruiter toe
         script.
             function deleteCompany(companyName) {
                 const url = `/bedrijven/delete/${companyName}`;

@@ -29,7 +29,7 @@ app.use('/users', usersRouter);
 app.use('/vacatures',vacatureRouter);
 app.use('/bedrijven',bedrijfRouter);
 //app.use('/recruiters',recruiterRouter);
-app.use('/werkzoekende',werkzoekendeRouter);
+app.use('/werkzoekenden',werkzoekendeRouter);
 app.use('/', indexRouter);
 
 
