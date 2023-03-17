@@ -57,7 +57,7 @@ router.post('/new',
             return res.status(422).json({ errors: errorMessages });
         }else {
         const { recruiter, bedrijf, beschrijving, eisen, salarisstart, salariseind, gepubliceerd, deadline } = req.body;
-
+        console.log(beschrijving)
         try {
             const newVacature = await addVacature(recruiter, bedrijf, beschrijving, eisen.split(','), salarisstart, salariseind, gepubliceerd, deadline);
             console.log('added succesfully')
