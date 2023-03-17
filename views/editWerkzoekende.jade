@@ -23,10 +23,10 @@ html
         script.
             function editWerzoekende(werkmail) {
 
-                const content = {naam:document.getElementById('naam').value.toString(),
-                    email:document.getElementById('email').value.toString(),
-                    competenties: document.getElementById('competenties').value.toString(),
-                    cv: document.getElementById('cv').value.toString()
+                const content = {naam:document.getElementById('naam').toString(),
+                    email:document.getElementById('email').toString(),
+                    competenties: document.getElementById('competenties').toString(),
+                    cv: document.getElementById('cv').toString()
                 }
                 console.log(content);
                 const url = `/werkzoekenden/edit/${werkmail}`;
