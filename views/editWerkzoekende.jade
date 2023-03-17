@@ -23,13 +23,14 @@ html
         script.
             function editWerzoekende(werkmail) {
 
-                const content = {Naam:edit_form.naam.value.toString(),
-                    Email:edit_form.email.value.toString(),
-                    Competenties: edit_form.competenties.value.toString(),
-                    Cv: edit_form.cv.value.toString()
+                const content = {naam:edit_form.naam.value.toString(),
+                    email:edit_form.email.value.toString(),
+                    competenties: edit_form.competenties.value.toString(),
+                    cv: edit_form.cv.value.toString()
                 }
+                console.log(JSON.stringify(content));
                 const url = `/werkzoekenden/edit/${werkmail}`;
-                fetch(url, {method: 'PATCH',body:JSON.stringify(content)})
+                fetch(url, {method: 'PATCH', body:JSON.stringify(content)})
                     .then(response => {
                         if (response.ok) {
                             console.log('succesfullly updated')
