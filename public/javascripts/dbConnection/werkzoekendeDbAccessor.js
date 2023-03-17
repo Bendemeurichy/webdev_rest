@@ -13,6 +13,16 @@ async function createWerkzoekende(a_naam,a_email,a_competenties,a_cv){
     console.log(`new werkzoekende with email ${a_email} has been saved`);
 }
 
+async function updateWerkzoekende(a_naam, a_email, a_competenties, a_cv) {
+    const zoeker = Werkzoekende.findOne({email: a_email});
+    zoeker.naam = a_naam;
+    zoeker.email = a_email;
+    zoeker.competenties = a_competenties;
+    zoeker.cv = a_cv;
+    await zoeker.save();
+    console.log('Werkzoekende updated');
+}
+
 async function removeWerkzoekende(a_email){
     await Werkzoekende.findOneAndDelete({email:a_email});
     console.log(`werkzoekende with email ${a_email} has been deleted`);

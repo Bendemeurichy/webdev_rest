@@ -44,7 +44,7 @@ async function addBeoordeling(a_bedrijf, a_werknemer, a_tekst, a_score) {
             b_beoordelingen.forEach(b => newScore+b);
             newScore = newScore / b_beoordelingen.length;
 
-            bedrijf.update({score: newScore});
+            bedrijf.score = newScore;
             await bedrijf.save();
             console.log(`beoordeling for bedrijf ${a_bedrijf.naam} form ${a_werknemer.email} has been added.`);
         }

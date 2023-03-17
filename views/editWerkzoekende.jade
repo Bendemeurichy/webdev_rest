@@ -6,12 +6,12 @@ html
         button(onclick="window.location.href='/'") back
         h1 Pas de gewenste velden aan en sla de veranderingen op.
         span
-            form(method='post', action='/werkzoekenden/edit/'+ email)
+            form(id='edit_form', action='/werkzoekenden/edit/'+ email)
                 label(for='naam') Voor en achternaam:
-                    input(type='text', name='naam', required=true, value=naam)
+                    input(type='text', name='naam', id='naam', required=true, value=naam)
                     br
                     label(for='email') E-mail address:
-                    input(type='text', name='email', required=true, value=email)
+                    input(type='text', name='naam', id='email', required=true, value=email)
                     br
                     label(for='competenties') Competenties:
                     input(id="competenties", name='competenties', placeholder='gescheiden met komma. vb: Engels,Frans,Java script' , required=true, value= c_string)
@@ -19,4 +19,30 @@ html
                     label(for='cv') cv:
                     input(id="cv", name='cv', required=true, placeholder='geef een link naar bv uw linked in profiel', value=cv)
                     br
-                    button(type='submit') Sla op
+                    button(type='button' onclick=`editWerzoekende('${werkz.email}')`) Sla op
+    script.
+        function editWerzoekende(werkmail) {
+
+            const content = {Naam:edit_form.naam.value.toString(),
+                Email:edit_form.email.value.toString(),
+                Competenties: edit_form.competenties.value.toString(),
+                Cv: edit_form.cv.value.toString()
+            }
+            const url = `/werkzoekenden/edit/${werkmail}`;
+            fetch(url, {method: 'PATCH',body:JSON.stringify(content)})
+                .then(response => {
+                    if (response.ok) {
+                        console.log('succesfullly deleted')
+                        // Handle successful deletion
+                        window.location.href = '/bedrijven'
+                    } else {
+                        console.error("something went wrong")
+                        window.alert('something went wrong')
+                        window.location.href = '/bedrijven'
+                        // Handle error response
+                    }
+                })
+                .catch(err => {
+                    // Handle network or other error
+                });
+        }

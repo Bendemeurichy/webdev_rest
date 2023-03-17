@@ -1,0 +1,25 @@
+doctype html
+html
+    head
+        title add recruiter
+    body
+        button(onclick="window.location.href='/recruiters'") spek
+        h1 Voeg nieuwe recruiter toe
+        span
+            form(method='post', action='/recruiters/add')
+                label(for='naam') Naam:
+                input(type='text', name='naam', required=true)
+                br
+                label(for='email') email:
+                input(type='text', name='email', required=true)
+                br
+                label(for='bedrijf') Bedrijf:
+                    select(name='bedrijf', required=true)
+                        each bedrijf in bedrijven
+                            option(value=`${bedrijf._id}`) #{bedrijf.naam}
+                br
+                button(type='submit') Add recruiter
+        if errors
+            ul
+                for error in errors
+                    li #{error}

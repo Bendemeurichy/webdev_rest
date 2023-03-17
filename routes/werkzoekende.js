@@ -77,6 +77,50 @@ router.post('/add',
     }
 );
 
+router.patch('/edit/:email',
+        body('naam').trim().isLength({min:1}).withMessage('Naam is verplicht').escape(),
+        body('email').trim().isLength({min:1}).withMessage('email is verplicht').escape(),
+        body('competenties').trim().isLength({min:1}).withMessage('Competenties zijn verplicht').escape(),
+        body('cv').trim().isLength({min:1}).withMessage('cv is verplicht').escape(),
+        async (req, res) => {
+            const oldEmail = req.params.email;
+            const old_werkzoekende = await Werkzoekende.findOne({email: oldEmail});
+            const a_c_string = old_werkzoekende.competenties.join(',');
+            const errors = validationResult(req);
+            if (! errors.isEmpty()) {
+                const errorMessages = errors.array().map(error => error.msg);
+                return res.render('editWerkzoekende',{email: old_werkzoekende.email, naam: old_werkzoekende.naam, cv: old_werkzoekende.cv, c_string: a_c_string})
+            } else {
 
+                const a_naam = req.body.naam;
+                const a_email = req.body.email;
+                const a_competenties = req.body.competenties.split(',');
+                const a_cv = req.body.cv;
+
+                try {
+                    Werkzoekende.findOne({email:a_email}).then(async bedrijf=>{
+                        if(bedrijf){
+                            console.log("Aangepaste werkzoekende bestaat al error");
+                            res.redirect('/werkzoekenden');
+                            return;
+                        }else {
+                            let valid=a_email.match(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/);
+                            if(! valid){
+                                console.error('invalid email')
+                                res.redirect(445,'werkzoekenden')
+                            } else {
+
+                                await createWerkzoekende(a_naam, a_email, a_competenties, a_cv).catch(err=>{throw err})
+                                console.log("werkzoekende aangepast");
+                                res.redirect('/werkzoekenden');
+                                return;}
+                        }});
+                } catch (err) {
+                    console.log("Unknown error has occurred");
+                    res.status(500).json({ message: 'An error occurred while adding a new werkzoekende.' });
+                    return
+                }
+            }
+});
 
 module.exports = router;

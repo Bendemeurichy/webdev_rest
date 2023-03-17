@@ -16,8 +16,9 @@ router.get('/', async function(req, res) {
     }
 });
 
-router.get('/add', (req, res) => {
-    res.render('addRecruiter');
+router.get('/add', async (req, res) => {
+    const bedrijven = await Bedrijf.find();
+    res.render('addRecruiter',{bedrijven});
 });
 
 router.get('/overview/:recruiter', async(req, res) => {
