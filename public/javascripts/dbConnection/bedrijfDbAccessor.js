@@ -15,8 +15,8 @@ async function createBedrijf(a_naam, a_industrie, a_beschrijving) {
 }
 
 async function removeBedrijf(a_naam) {
-    console.log('remove called')
-    await Bedrijf.findOneAndeDelete({naam: a_naam});
+
+    await Bedrijf.findOneAndDelete({naam: a_naam});
     console.log(`removed bedrijf with name ${a_naam}`);
 }
 
