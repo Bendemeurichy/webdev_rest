@@ -24,12 +24,10 @@ const bedrijfSchema = new Schema({
     },
     vacatures: {
         type: [{type:Schema.Types.ObjectId, ref:'Vacature'}],
-        ref: 'Vacature',
         require: false
     },
     beoordelingen: {
         type: [{type:Schema.Types.ObjectId, ref:'Beoordeling'}],
-        ref: 'Beoordeling',
         require: false
     },
     gem_score: {
