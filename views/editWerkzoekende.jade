@@ -19,7 +19,7 @@ html
                     label(for='cv') cv:
                     input(id="cv", name='cv', required=true, placeholder='geef een link naar bv uw linked in profiel', value=cv)
                     br
-                    button(type='button' onclick=`editWerzoekende('${werkz.email}')`) Sla op
+                    button(type='button' onclick=`editWerzoekende('${email}')`) Sla op
         script.
             function editWerzoekende(werkmail) {
 
