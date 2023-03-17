@@ -28,7 +28,7 @@ html
             a(href='/vacatures/new') Create New Vacature
     script.
         function deleteVacature(vacatuerId) {
-            const url = `/bedrijven/delete/${vacatuerId}`;
+            const url = `/vacatures/delete/${vacatuerId}`;
             fetch(url, {method: 'DELETE'})
                 .then(response => {
                     if (response.ok) {

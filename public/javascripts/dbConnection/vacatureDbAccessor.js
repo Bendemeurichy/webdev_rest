@@ -46,3 +46,4 @@ async function addReactie(a_werkzoekende,a_tekst,a_vacature){
 }
 
 module.exports.addVacature = addVacature;
+module.exports.removeVacature = removeVacature;

@@ -3,8 +3,9 @@ const router = express.Router();
 const Vacature = require('../public/javascripts/mongomodels/vacatures');
 const Recruiter = require('../public/javascripts/mongomodels/recruiter');
 const Bedrijf = require('../public/javascripts/mongomodels/bedrijf');
-const {addVacature}=require('../public/javascripts/dbConnection/vacatureDbAccessor')
+const {addVacature,removeVacature}=require('../public/javascripts/dbConnection/vacatureDbAccessor')
 const { body, validationResult } = require("express-validator");
+const {removeBedrijf} = require("../public/javascripts/dbConnection/bedrijfDbAccessor");
 
 /* GET home page. */
 router.get('/', async function(req, res, next) {
@@ -57,7 +58,7 @@ router.post('/new',
             return res.status(422).json({ errors: errorMessages });
         }else {
         const { recruiter, bedrijf, beschrijving, eisen, salarisstart, salariseind, gepubliceerd, deadline } = req.body;
-        console.log(beschrijving)
+
         try {
             const newVacature = await addVacature(recruiter, bedrijf, beschrijving, eisen.split(','), salarisstart, salariseind, gepubliceerd, deadline);
             console.log('added succesfully')
@@ -69,5 +70,19 @@ router.post('/new',
         }
     }
 });
+
+router.delete('/delete/:id',async(req,res)=>{
+    const vacatureid = req.params.id;
+    console.log(vacatureid+ 'delete called')
+    try{
+        await removeVacature(vacatureid)
+        return res.status(200).json({message:'deleted succesfully'});
+    }catch(err){
+        console.log("Unknown error has occurred");
+        res.status(500).json({ message: 'An error occurred while removing a bedrijf.' });
+        return;
+    }
+
+})
 
 module.exports = router;
