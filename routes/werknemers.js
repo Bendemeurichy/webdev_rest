@@ -7,7 +7,7 @@ const Werknemer = require('../public/javascripts/mongomodels/werknemer');
 router.get('/', async function(req, res) {
     try {
         const dbWerknemers = await Werknemer.find();
-        res.render('werknemers', {werknemerss: dbWerknemers});
+        res.render('werknemers', {werknemers: dbWerknemers});
     } catch (err) {
         console.error(err);
         res.status(500).send('Server error');
