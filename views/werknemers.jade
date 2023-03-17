@@ -15,7 +15,12 @@ html
                             br
                             b E-mail:
                             | #{werkn.email}
+                            br
                             b Bedrijf:
                             | TODO
+                            br
                             b Functie:
                             | #{werkn.functie}
+                            br
+                            a(href='/review/'+werkn.email) Plaats review voor huidig bedrijf
+        a(href='/add') Voeg nieuwe werknemer toe
