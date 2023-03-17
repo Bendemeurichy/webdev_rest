@@ -29,8 +29,8 @@ html
         a(href='/werkzoekenden/add') Voeg nieuwe werkzoekende toe
 
         script.
-            function deleteCompany(companyName) {
-                const url = `/bedrijven/delete/${companyName}`;
+            function deleteWerkzoekende(companyName) {
+                const url = `/werkzoekenden/delete/${companyName}`;
                 fetch(url, {method: 'DELETE'})
                     .then(response => {
                         if (response.ok) {

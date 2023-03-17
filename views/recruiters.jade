@@ -21,7 +21,7 @@ html
                             br
                             button(id=recruiter.naam onclick=`deleteRecruiter('${recruiter.email}')`) Remove Bedrijf
 
-        a(href='/bedrijven/add') Voeg nieuwe recruiter toe
+        a(href='/recruiters/add') Voeg nieuwe recruiter toe
         script.
             function deleteRecruiter(email) {
                 const url = `/recruiters/delete/${email}`;

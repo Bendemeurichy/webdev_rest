@@ -4,6 +4,7 @@ const Werkzoekende = require("../public/javascripts/mongomodels/werkzoekende");
 const {createWerkzoekende} = require("../public/javascripts/dbConnection/werkzoekendeDbAccessor");
 const {updateWerkzoekende} = require("../public/javascripts/dbConnection/werkzoekendeDbAccessor");
 const {body, validationResult} = require("express-validator");
+const {removeBedrijf} = require("../public/javascripts/dbConnection/bedrijfDbAccessor");
 
 /* GET werkzoekende overview */
 router.get('/', async function(req, res) {
@@ -104,5 +105,18 @@ router.patch('/edit/:email',
                     return
                 }
 });
+
+router.delete('/delete/:email', async(req,res)=>{
+    const a_email = req.params.email;
+    console.log(bedrijfid+ 'delete called')
+    try{
+        await removeBedrijf(bedrijfid)
+        return res.status(200).json({message:'deleted succesfully'});
+    }catch(err){
+        console.log("Unknown error has occurred");
+        res.status(500).json({ message: 'An error occurred while removing a bedrijf.' });
+        return;
+    }
+})
 
 module.exports = router;
