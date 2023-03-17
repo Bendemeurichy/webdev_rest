@@ -37,4 +37,4 @@ async function addVacatureToRecruiter(a_id,a_recruitermail){
 
 } catch(err){
     console.error(err);
-}
+}}
