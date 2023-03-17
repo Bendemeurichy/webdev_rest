@@ -28,7 +28,7 @@ const bedrijfSchema = new Schema({
         require: false
     },
     beoordelingen: {
-        type: [{elem: {type: Schema.Types.ObjectId, ref: 'Beoordeling'}}],
+        type: [{type:Schema.Types.ObjectId, ref:'Beoordeling'}],
         ref: 'Beoordeling',
         require: false
     },
