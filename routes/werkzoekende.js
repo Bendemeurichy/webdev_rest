@@ -79,10 +79,10 @@ router.post('/add',
 );
 
 router.patch('/edit/:email',
-        body('naam').trim().isLength({min:1}).withMessage('Naam is verplicht').escape(),
-        body('email').trim().isLength({min:1}).withMessage('email is verplicht').escape(),
-        body('competenties').trim().isLength({min:1}).withMessage('Competenties zijn verplicht').escape(),
-        body('cv').trim().isLength({min:1}).withMessage('cv is verplicht').escape(),
+        body('Naam').trim().isLength({min:1}).withMessage('Naam is verplicht').escape(),
+        body('Email').trim().isLength({min:1}).withMessage('email is verplicht').escape(),
+        body('Competenties').trim().isLength({min:1}).withMessage('Competenties zijn verplicht').escape(),
+        body('Cv').trim().isLength({min:1}).withMessage('cv is verplicht').escape(),
         async (req, res) => {
             const oldEmail = req.params.email;
             const old_werkzoekende = await Werkzoekende.findOne({email: oldEmail});
