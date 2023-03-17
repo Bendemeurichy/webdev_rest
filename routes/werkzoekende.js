@@ -79,20 +79,11 @@ router.post('/add',
 );
 
 router.patch('/edit/:email',
-        body('Naam').trim().isLength({min:1}).withMessage('Naam is verplicht').escape(),
-        body('Email').trim().isLength({min:1}).withMessage('email is verplicht').escape(),
-        body('Competenties').trim().isLength({min:1}).withMessage('Competenties zijn verplicht').escape(),
-        body('Cv').trim().isLength({min:1}).withMessage('cv is verplicht').escape(),
         async (req, res) => {
             const oldEmail = req.params.email;
             const old_werkzoekende = await Werkzoekende.findOne({email: oldEmail});
             const a_c_string = old_werkzoekende.competenties.join(',');
-            const errors = validationResult(req);
-            if (! errors.isEmpty()) {
-                const errorMessages = errors.array().map(error => error.msg);
-                console.log('Validation error');
-                return res.render('editWerkzoekende',{email: old_werkzoekende.email, naam: old_werkzoekende.naam, cv: old_werkzoekende.cv, c_string: a_c_string})
-            } else {
+            
                 const a_naam = req.body.naam;
                 const a_email = req.body.email;
                 const a_competenties = req.body.competenties.split(',');
@@ -112,10 +103,9 @@ router.patch('/edit/:email',
 
                 } catch (err) {
                     console.log("Unknown error has occurred");
-                    res.status(500).json({ message: 'An error occurred while editing a werkzoekende.' });
+                    res.status(500).json({message: 'An error occurred while editing a werkzoekende.'});
                     return
                 }
-            }
 });
 
 module.exports = router;
