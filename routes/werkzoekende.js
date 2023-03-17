@@ -19,8 +19,10 @@ router.get('/add' , async (req, res) => {
     let errors =[]
     if(res.statusCode===445){
         errors = ["invalid email"]
+        res.render('addWerkzoekende',{errors:errors})
+    } else {
+        res.render('addWerkzoekende', );
     }
-    res.render('addWerkzoekende',{errors:errors});
 });
 
 router.get('/edit/:email', async (req, res) => {
@@ -45,7 +47,7 @@ router.post('/add',
 
             const a_naam = req.body.naam;
             const a_email = req.body.email;
-            var a_competenties = req.body.competenties.split(',');
+            const a_competenties = req.body.competenties.split(',');
             const a_cv = req.body.cv;
 
             try {
@@ -60,10 +62,11 @@ router.post('/add',
                             console.error('invalid email')
                             res.redirect(445,'werkzoekenden/add')
                         } else {
-                        await createWerkzoekende(a_naam, a_email, a_competenties, a_cv).catch(err=>{throw err})
-                        console.log("werkzoekende toegevoegd");
-                        res.redirect('/werkzoekenden');
-                        return;}
+                            console.log(a_email)
+                            await createWerkzoekende(a_naam, a_email, a_competenties, a_cv).catch(err=>{throw err})
+                            console.log("werkzoekende toegevoegd");
+                            res.redirect('/werkzoekenden');
+                            return;}
                     }});
             } catch (err) {
                 console.log("Unknown error has occurred");
@@ -73,5 +76,7 @@ router.post('/add',
         }
     }
 );
+
+
 
 module.exports = router;
