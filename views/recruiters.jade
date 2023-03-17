@@ -19,22 +19,22 @@ html
                             br
                             a(href='/bedrijven/overview/#{recruiter.naam}') Bezoek recruiter pagina
                             br
-                            button(id=recruiter.naam onclick=`deleteCompany('${bedrijf.naam}')`) Remove Bedrijf
+                            button(id=recruiter.naam onclick=`deleteRecruiter('${recruiter.email}')`) Remove Bedrijf
 
         a(href='/bedrijven/add') Voeg nieuwe recruiter toe
         script.
-            function deleteCompany(companyName) {
-                const url = `/bedrijven/delete/${companyName}`;
+            function deleteRecruiter(email) {
+                const url = `/recruiters/delete/${email}`;
                 fetch(url, {method: 'DELETE'})
                     .then(response => {
                         if (response.ok) {
                             console.log('succesfullly deleted')
                             // Handle successful deletion
-                            window.location.href = '/bedrijven'
+                            window.location.href = '/recruiters'
                         } else {
                             console.error("something went wrong")
                             window.alert('something went wrong')
-                            window.location.href = '/bedrijven'
+                            window.location.href = '/recruiters'
                             // Handle error response
                         }
                     })

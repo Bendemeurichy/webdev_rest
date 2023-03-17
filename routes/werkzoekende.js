@@ -13,4 +13,8 @@ router.get('/', async function(req, res) {
     }
 });
 
+router.get('/add' , async (req, res) => {
+    res.render('addWerkzoekende');
+});
+
 module.exports = router;

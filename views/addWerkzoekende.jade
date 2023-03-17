@@ -1,0 +1,21 @@
+doctype html
+html
+    head
+        title add werkzoekende
+    body
+        h1 Voeg een nieuwe werkzoekende toe
+        span
+            form(method='post', action='/werkzoekenden/add')
+                label(for='naam') Voor en achternaam:
+                    input(type='text', name='naam', required=true)
+                    br
+                    label(for='email') E-mail address:
+                    input(type='text', name='email', required=true)
+                    br
+                    label(for='competenties') Competenties:
+                    input(id="competenties", name='competenties',placeholder='gescheiden met komma. vb: Engels,Frans,Java script' , required=true)
+                    br
+                    label(for='cv') cv:
+                    textarea(id="cv", name='cv', required=true)
+                    br
+                    button(type='submit') Voeg toe
