@@ -15,3 +15,9 @@ html
                             br
                             b E-mail:
                             | #{werkz.email}
+                            b Competenties:
+                            br
+                            ul
+                                each comp in werkz.competenties
+                                    li
+                                        p #{}
