@@ -66,7 +66,7 @@ router.post('/add',
                             res.redirect(445,'werkzoekenden/add')
                         } else {
 
-                            await createWerkzoekende(a_naam, a_email, a_competenties, a_cv).catch(err=>{throw err})
+                            await createWerkzoekende(a_naam, a_email, a_competenties, a_cv).catch(err=>{throw err});
                             console.log("werkzoekende toegevoegd");
                             res.redirect('/werkzoekenden');
                             return;}

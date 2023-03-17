@@ -36,7 +36,7 @@ router.post('/add',
             const a_naam = req.body.naam;
             const a_email = req.body.email;
             const a_bedrijf = req.body.bedrijf;
-            const a_cv = req.body.functie;
+            const a_functie = req.body.functie;
             try{
                 Werknemer.findOne({email: a_email}).then(async wn => {
                     if (wn) {
@@ -50,7 +50,7 @@ router.post('/add',
                                 res.redirect('/werknemers/add');
                                 return;
                             } else {
-                                awa
+                                await createWerknemer(a_naam, a_email, a_bedrijf, a_functie).catch(err=>{throw err});
                             }
                         });
                     }
