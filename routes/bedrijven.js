@@ -68,6 +68,7 @@ router.post('/add',
 
 router.delete('/delete/:id',async(req,res)=>{
     const bedrijfid = req.params.id;
+    console.log(bedrijfid+ 'delete called')
     try{
         await removeBedrijf(bedrijfid)
         res.redirect('/bedrijven')
