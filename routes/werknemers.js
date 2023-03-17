@@ -105,7 +105,7 @@ router.post('/review/:email/:bedrijf',
             try {
                 const c_werknemer = await Werknemer.findOne({email: a_email});
                 const c_bedrijf = await Bedrijf.findOne({naam: a_bedrijf});
-                console.log(c_bedrijf._id + c_werknemer._id);
+                console.log(c_bedrijf.naam);
                 await addBeoordeling(c_bedrijf._id, c_werknemer._id, a_beoordeling, a_score);
                 console.log("beoordeling toegevoegd");
                 res.redirect('/werknemers');
