@@ -95,7 +95,7 @@ router.patch('/edit/:email',
                     } else {
                         await updateWerkzoekende(a_naam, a_email, a_competenties, a_cv, oldEmail).catch(err=>{throw err})
                         console.log("werkzoekende aangepast");
-                        res.redirect('/werkzoekenden');
+                        res.stat(200).send("all acording to plan")
                         return;
                     }
 
