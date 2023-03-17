@@ -12,7 +12,7 @@ html
                 li
                     a(href=`/vacatures?v=${vacature._id}`)
 
-                        span #{vacature.bedrijf} - #{vacature.recruiter}
+                        span #{vacature.bedrijf.naam} - #{vacature.recruiter.email}
                         br
                         #{vacature.beschrijving}
                         br
