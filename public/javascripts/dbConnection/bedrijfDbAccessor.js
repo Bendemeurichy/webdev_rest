@@ -39,17 +39,19 @@ async function addBeoordeling(a_bedrijf, a_werknemer, a_tekst, a_score) {
                 score: a_score
             });
 
-            let bedrijf = await Bedrijf.findOne({naam: a_bedrijf});
-            bedrijf.beoordelingen.push(b);
+
+            bed.beoordelingen.push(b);
             console.log("beoordeling toegevoegd aan bedrijf")
             //Calculating new avg score
-            const b_beoordelingen = bedrijf.beoordelingen;
+            const b_beoordelingen = bed.beoordelingen;
             var newScore = 0;
             b_beoordelingen.forEach(b => newScore+b);
             newScore = newScore / b_beoordelingen.length;
 
-            bedrijf.score = newScore;
-            await bedrijf.save();
+            bed.score = newScore;
+            console.log(bed.score)
+            console.log(bed.beoordelingen)
+            await bed.save();
             console.log(`beoordeling for bedrijf ${a_bedrijf} form ${a_werknemer} has been added.`);
         }
     }
