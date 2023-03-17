@@ -4,18 +4,18 @@ html
         title add
     body
         h1 Voeg een nieuwe werknemer toe
-            span
-                form(method='post', action='/werknemers/add')
-                    label(for='naam') Voor en achternaam:
-                        input(type='text', name='naam', required=true)
-                        br
-                        label(for='email') E-mail address:
-                        input(type='text', name='email', required=true)
-                        br
-                        label(for='competenties') Bedrijf:
-                        input(id="competenties", name='competenties' , required=true)
-                        br
-                        label(for='cv') Functie:
-                        input(id="cv", name='cv', required=true)
-                        br
-                        button(type='submit') Voeg toe
+        span
+            form(method='post', action='/werknemers/add')
+                label(for='naam') Voor en achternaam:
+                    input(type='text', name='naam', required=true)
+                    br
+                    label(for='email') E-mail address:
+                    input(type='text', name='email', required=true)
+                    br
+                    label(for='competenties') Bedrijf:
+                    input(id="competenties", name='competenties' , required=true)
+                    br
+                    label(for='cv') Functie:
+                    input(id="cv", name='cv', required=true)
+                    br
+                    button(type='submit') Voeg toe
