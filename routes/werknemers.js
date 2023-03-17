@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+const {createWerknemer} = require("../public/javascripts/dbConnection/werknemerDbAccessor");
 
 const Werknemer = require('../public/javascripts/mongomodels/werknemer');
 const {render} = require("express/lib/application");
@@ -45,11 +46,13 @@ router.post('/add',
                     } else {
                         Bedrijf.findOne({naam: a_bedrijf}).then(async bd => {
                             if (!bd) {
-                                console.log("Bedrijf met naam ${a_bedrijf}");
+                                console.log(`Bedrijf met naam ${a_bedrijf} bestaat niet`);
                                 res.redirect('/werknemers/add');
                                 return;
+                            } else {
+                                awa
                             }
-                        })
+                        });
                     }
                 });
             } catch (err) {

@@ -8,7 +8,7 @@ async function addRecruiter(a_naam,a_email,a_bedrijf){
     let recruiter = new Recruiter({
         naam:a_naam,
         email:a_email,
-        bedrijf:Bedrijf.findOne({_id:a_bedrijf}),
+        bedrijf:Bedrijf.findOne({naam:a_bedrijf}),
     });
     await recruiter.save();
     console.log(`recruiter with email ${a_email} has been saved`)

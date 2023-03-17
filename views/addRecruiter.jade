@@ -16,7 +16,7 @@ html
                 label(for='bedrijf') Bedrijf:
                     select(name='bedrijf', required=true)
                         each bedrijf in bedrijven
-                            option(value=`${bedrijf._id}`) #{bedrijf.naam} #{bedrijf._id}
+                            option(value=`${bedrijf.naam}`) #{bedrijf.naam}
                 br
                 button(type='submit') Add recruiter
         if errors
