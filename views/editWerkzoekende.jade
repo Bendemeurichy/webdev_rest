@@ -32,13 +32,13 @@ html
                 fetch(url, {method: 'PATCH',body:JSON.stringify(content)})
                     .then(response => {
                         if (response.ok) {
-                            console.log('succesfullly deleted')
+                            console.log('succesfullly updated')
                             // Handle successful deletion
-                            window.location.href = '/bedrijven'
+                            window.location.href = '/werkzoekenden'
                         } else {
                             console.error("something went wrong")
                             window.alert('something went wrong')
-                            window.location.href = '/bedrijven'
+                            window.location.href = '/werkzoekenden'
                             // Handle error response
                         }
                     })

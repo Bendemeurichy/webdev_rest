@@ -110,7 +110,6 @@ router.patch('/edit/:email',
                                 console.error('invalid email')
                                 res.redirect(445,'werkzoekenden')
                             } else {
-
                                 await updateWerkzoekende(a_naam, a_email, a_competenties, a_cv).catch(err=>{throw err})
                                 console.log("werkzoekende aangepast");
                                 res.redirect('/werkzoekenden');
