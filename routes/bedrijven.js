@@ -33,8 +33,8 @@ router.get('/overview/:bedrijf', async(req, res) => {
 
 router.post('/add',
     body('naam').trim().isLength({min:1}).withMessage('Naam is verplicht').escape(),
-    body('industrie').trim().isLength({min:1}).withMessage('Industrie is verplicht').isAlpha().withMessage('Enkel letters toegelaten').escape(),
-    body('beschrijving').trim().isLength({min:1}).withMessage('Beschrijving is verplicht').isAlpha().withMessage('Enkel letters en cijfers toegelaten').escape()
+    body('industrie').trim().isLength({min:1}).withMessage('Industrie is verplicht').escape(),
+    body('beschrijving').trim().isLength({min:1}).withMessage('Beschrijving is verplicht').escape()
     ,
         (req, res) => {
     const errors = validationResult(req);
